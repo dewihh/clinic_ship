@@ -1,0 +1,297 @@
+* {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-decoration: none;
+  outline: none;
+  box-sizing: border-box;
+  border: none;
+}
+
+body {
+  background-color: #d7d7d7;
+}
+
+.homepages__title {
+  font-family: "Sniglet", cursive;
+  text-align: center;
+  margin-top: 100px;
+}
+
+.homepages__title h1 {
+  font-size: 45px;
+  color: #946262;
+}
+
+.homepages__title p {
+  font-family: "Courier New", Courier, monospace;
+  color: #cf7070;
+  margin-top: 7px;
+  font-size: 22px;
+}
+
+.homepages__navbar {
+  font-family: "Sniglet", cursive;
+  width: 82%;
+  background-color: #3f859b;
+  margin-left: 120px;
+  margin-top: 44px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+}
+
+.homepages__navbar .navbar__menu ul {
+  display: flex;
+  font-size: 22px;
+  color: #eedfdf;
+}
+
+.homepages__navbar .navbar__menu ul li {
+  margin-left: 45px;
+  height: 100%;
+}
+
+.homepages__navbar .navbar__menu ul li a {
+  color: #eedfdf;
+}
+
+.homepages__navbar .navbar__menu ul li a span {
+  display: block;
+  width: 100%;
+  padding: 28px 10px 26px 10px;
+}
+
+.homepages__navbar .navbar__menu ul li a span:hover {
+  background-color: rgba(255, 255, 255, 20%);
+}
+
+.homepages__main {
+  text-align: center;
+}
+
+.homepages__main h1 {
+  font-family: "Sniglet", cursive;
+  font-size: 24px;
+  margin-top: 60px;
+  color: #243f47;
+  text-transform: uppercase;
+}
+
+.homepages__main h2 {
+  font-family: "Lexend Zetta", sans-serif;
+  font-size: 22px;
+  margin-top: 60px;
+  color: #eedfdf;
+}
+
+.homepages__main .container .container__title {
+  background-color: #cf7070;
+  width: 82%;
+  margin-left: 120px;
+}
+
+.homepages__main .container .option {
+  font-family: "Lexend Zetta", sans-serif;
+  display: flex;
+  justify-content: space-evenly;
+  background-color: #e09aab;
+  width: 82%;
+  margin-left: 120px;
+}
+
+.homepages__main .container .option .option__satu {
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
+
+.homepages__main .container .option .option__satu a {
+  color: #eedfdf;
+}
+
+/* STYLE HALAMAN REGISTER */
+
+.input__main {
+  margin-top: 30px;
+  background-color: #cf7070;
+  width: 55%;
+  margin: 20px auto;
+}
+
+.input__main .container__input {
+  padding-top: 35px;
+  padding-bottom: 35px;
+}
+
+.controls {
+  display: inline-block;
+}
+
+.controls textarea,
+.controls input,
+.controls select {
+  width: 350px;
+  height: 43px;
+  background-color: #e7a0b1;
+  border: none;
+}
+
+.control-group {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.control-label {
+  font-family: "Lexend Zetta", sans-serif;
+  font-size: 14px;
+  color: #eedfdf;
+  padding: 0px 0 20px 120px;
+}
+
+/* STYLE HALAMAN READ_TAG */
+
+.homepages__main .input__main #show_user_data {
+  font-family: "Lexend Zetta", sans-serif;
+  font-size: 14px;
+}
+
+.input__main #show_user_data form .table_dua tr td {
+  padding: 20px 0 20px 120px;
+}
+
+table {
+  width: 100%;
+  height: 100%;
+}
+
+.input_read {
+  font-family: "Lexend Zetta", sans-serif;
+  font-size: 14px;
+}
+
+.input_read .table_dua tr td {
+  padding: 20px 0 20px 120px;
+}
+
+/* STYLE HALAMAN READ_TAG_USER */
+
+.read {
+  padding-top: 35px;
+  padding-bottom: 35px;
+  margin: auto 150px;
+  font-family: "Lexend Zetta", sans-serif;
+  font-size: 14px;
+}
+
+.homepages__main .container .card {
+  font-family: "Lexend Zetta", sans-serif;
+  display: flex;
+  justify-content: space-evenly;
+  width: 82%;
+  margin-left: 120px;
+  margin-top: 20px;
+  margin-bottom: 50px;
+}
+
+.homepages__main .container .card .card__satu {
+  margin-top: 25px;
+  margin-bottom: 70px;
+  background-color: #c4c4c4;
+  width: 160px;
+  height: 222px;
+  padding-top: 28px;
+}
+
+.homepages__main .container .card .card__satu:hover {
+  background-color: black;
+}
+
+.homepages__main .container .card .card__satu a {
+  color: #ffffff;
+  font-size: 20px;
+}
+
+.homepages__main .container .card .card__satu a p {
+  padding-top: 10px;
+}
+
+.homepages__main .container .card .card__satu .bullet {
+  color: #ffffff;
+  font-size: 20px;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  background-color: #c4c4c4;
+  margin-left: 55px;
+}
+
+.homepages__main .container .card .card__satu .bullet:hover {
+  background-color: #000000;
+}
+
+.homepages__main .container .card .card__satu .bullet a span {
+  display: flex;
+  justify-content: center;
+  padding: 5px;
+  align-items: center;
+}
+
+button {
+  background-color: #454d4f;
+  color: #eeeeee;
+  font-family: "Itim", cursive;
+  text-transform: uppercase;
+  width: 5.7rem;
+  height: 2rem;
+  border-radius: 23px;
+  margin-top: 20px;
+  outline: none;
+  border: none;
+  box-shadow: 0px 6.4px 0px #000000;
+}
+
+button:hover {
+  cursor: pointer;
+  background-color: rgba(105, 105, 105, 0.719);
+}
+
+button:active {
+  box-shadow: 0px 3px 0px #000000;
+}
+
+.margin-top {
+  margin-top: 100px;
+}
+
+.margin-top-3 {
+  margin-top: 79px;
+}
+
+.mrg-104 {
+  margin-right: 178px;
+}
+
+.mrg-57 {
+  margin-right: 142px;
+}
+
+.mrg-48 {
+  margin-right: 125px;
+}
+
+.mrg-182 {
+  margin-right: 157px;
+}
+
+.mrg-114 {
+  margin-right: 105px;
+}
+
+.mrg-141 {
+  margin-right: 126px;
+}
+
+.mrg-28 {
+  margin-right: 40px;
+}
