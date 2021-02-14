@@ -149,6 +149,17 @@ body {
   padding: 0px 0 20px 120px;
 }
 
+.controls input,
+.controls textarea {
+  padding: 10px;
+}
+
+.controls select {
+  padding: 5px;
+  color: rgb(63, 63, 63);
+  font-weight: normal;
+}
+
 /* STYLE HALAMAN READ_TAG */
 
 .homepages__main .input__main #show_user_data {
