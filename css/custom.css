@@ -306,3 +306,23 @@ button:active {
 .mrg-28 {
   margin-right: 40px;
 }
+
+/* STYLE HALAMAN Login */
+
+.homepages__login {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  width: 55%;
+  margin: 30px auto;
+  background-color: #ecd8c6;
+}
+
+.homepages__login .login__main .login__input {
+  padding-bottom: 35px;
+}
+
+.homepages__login .login__main img {
+  padding-top: 30px;
+  padding-bottom: 20px;
+}

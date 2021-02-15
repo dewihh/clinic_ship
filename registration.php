@@ -65,14 +65,14 @@ file_put_contents('UIDContainer.php', $Write);
 						<div class="control-group">
 							<label class="control-label mrg-104">ID</label>
 							<div class="controls">
-								<textarea name="id" id="getUID" placeholder="Please Scan your Card / Key Chain to display ID" rows="1" cols="1" required></textarea>
+								<textarea name="id" id="getUID" placeholder="Please Scan your Card to display ID" rows="1" cols="1" required></textarea>
 							</div>
 						</div>
 
 						<div class="control-group">
-							<label class="control-label mrg-57">Name</label>
+							<label class="control-label mrg-57">Nam</label>
 							<div class="controls">
-								<input id="div_refresh" name="name" type="text" placeholder="Isikan nama" required>
+								<input id="div_refresh" name="name" type="text" placeholder="Isikan Nama" required>
 							</div>
 						</div>
 
@@ -89,28 +89,28 @@ file_put_contents('UIDContainer.php', $Write);
 						<div class="control-group">
 							<label class="control-label mrg-182">Usia</label>
 							<div class="controls">
-								<input name="usia" type="text" placeholder="isikan usia" required>
+								<input name="usia" type="text" placeholder="Isikan Usia" required>
 							</div>
 						</div>
 
 						<div class="control-group">
 							<label class="control-label mrg-114">Nama KK</label>
 							<div class="controls">
-								<input name="nama_kk" type="text" placeholder="isikan nama_kk" required>
+								<input name="nama_kk" type="text" placeholder="Isikan Nama_kk" required>
 							</div>
 						</div>
 
 						<div class="control-group">
 							<label class="control-label mrg-141">Alamat</label>
 							<div class="controls">
-								<input name="alamat" type="text" placeholder="isikan alamat" required>
+								<input name="alamat" type="text" placeholder="Isikan Alamat" required>
 							</div>
 						</div>
 
 						<div class="control-group">
 							<label class="control-label mrg-28">Nomor Telepon</label>
 							<div class="controls">
-								<input name="no_telp" type="text" placeholder="isikan nomor telepon" required>
+								<input name="no_telp" type="text" placeholder="Isikan Nomor Telepon" required>
 							</div>
 						</div>
 
