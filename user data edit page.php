@@ -121,28 +121,28 @@ Database::disconnect();
 				<div class="control-group">
 					<label class="control-label">Usia</label>
 					<div class="controls">
-						<input name="usia" type="text" placeholder="" value="<?php echo $data['usia']; ?>" required>
+						<input name="age" type="text" placeholder="" value="<?php echo $data['age']; ?>" required>
 					</div>
 				</div>
 
 				<div class="control-group">
 					<label class="control-label">Nama_KK</label>
 					<div class="controls">
-						<input name="nama_kk" type="text" placeholder="" value="<?php echo $data['nama_kk']; ?>" required>
+						<input name="validation_sheet" type="text" placeholder="" value="<?php echo $data['validation_sheet']; ?>" required>
 					</div>
 				</div>
 
 				<div class="control-group">
 					<label class="control-label">Alamat</label>
 					<div class="controls">
-						<input name="alamat" type="text" placeholder="" value="<?php echo $data['alamat']; ?>" required>
+						<input name="adress" type="text" placeholder="" value="<?php echo $data['adress']; ?>" required>
 					</div>
 				</div>
 
 				<div class="control-group">
 					<label class="control-label">Nomor Telepon</label>
 					<div class="controls">
-						<input name="no_telp" type="text" placeholder="" value="<?php echo $data['no_telp']; ?>" required>
+						<input name="phone_numb" type="text" placeholder="" value="<?php echo $data['phone_numb']; ?>" required>
 					</div>
 				</div>
 

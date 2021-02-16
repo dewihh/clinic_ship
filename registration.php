@@ -70,7 +70,7 @@ file_put_contents('UIDContainer.php', $Write);
 						</div>
 
 						<div class="control-group">
-							<label class="control-label mrg-57">Nam</label>
+							<label class="control-label mrg-57">Name</label>
 							<div class="controls">
 								<input id="div_refresh" name="name" type="text" placeholder="Isikan Nama" required>
 							</div>
@@ -87,30 +87,30 @@ file_put_contents('UIDContainer.php', $Write);
 						</div>
 
 						<div class="control-group">
-							<label class="control-label mrg-182">Usia</label>
+							<label class="control-label mrg-182">Age</label>
 							<div class="controls">
-								<input name="usia" type="text" placeholder="Isikan Usia" required>
+								<input name="age" type="text" placeholder="Isikan Usia" required>
 							</div>
 						</div>
 
 						<div class="control-group">
-							<label class="control-label mrg-114">Nama KK</label>
+							<label class="control-label mrg-114">Validation</label>
 							<div class="controls">
-								<input name="nama_kk" type="text" placeholder="Isikan Nama_kk" required>
+								<input name="validation_sheet" type="text" placeholder="Isikan Nama_kk" required>
 							</div>
 						</div>
 
 						<div class="control-group">
-							<label class="control-label mrg-141">Alamat</label>
+							<label class="control-label mrg-141">Address</label>
 							<div class="controls">
-								<input name="alamat" type="text" placeholder="Isikan Alamat" required>
+								<input name="adress" type="text" placeholder="Isikan Alamat" required>
 							</div>
 						</div>
 
 						<div class="control-group">
-							<label class="control-label mrg-28">Nomor Telepon</label>
+							<label class="control-label mrg-28">Phone Number</label>
 							<div class="controls">
-								<input name="no_telp" type="text" placeholder="Isikan Nomor Telepon" required>
+								<input name="phone_numb" type="text" placeholder="Isikan Nomor Telepon" required>
 							</div>
 						</div>
 

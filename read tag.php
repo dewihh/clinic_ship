@@ -92,22 +92,22 @@ file_put_contents('UIDContainer.php', $Write);
 											<td align="left">--------</td>
 										</tr>
 										<tr bgcolor="#CF7070">
-											<td align="left" class="lf">Usia</td>
+											<td align="left" class="lf">Age</td>
 											<td style="font-weight:bold">:</td>
 											<td align="left">--------</td>
 										</tr>
 										<tr>
-											<td align="left" class="lf">Nama_KK</td>
+											<td align="left" class="lf">Validation</td>
 											<td style="font-weight:bold">:</td>
 											<td align="left">--------</td>
 										</tr>
 										<tr bgcolor="#CF7070">
-											<td align="left" class="lf">Alamat</td>
+											<td align="left" class="lf">Address</td>
 											<td style="font-weight:bold">:</td>
 											<td align="left">--------</td>
 										</tr>
 										<tr>
-											<td align="left" class="lf">Nomor Telepon</td>
+											<td align="left" class="lf">Phone Number</td>
 											<td style="font-weight:bold">:</td>
 											<td align="left">--------</td>
 										</tr>

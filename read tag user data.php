@@ -19,10 +19,10 @@ if (null == $data['name']) {
 	$data['id'] = $id;
 	$data['name'] = "--------";
 	$data['gender'] = "--------";
-	$data['usia'] = "--------";
-	$data['nama_kk'] = "--------";
-	$data['alamat'] = "--------";
-	$data['no_telp'] = "--------";
+	$data['age'] = "--------";
+	$data['validation_sheet'] = "--------";
+	$data['adress'] = "--------";
+	$data['phone_numb'] = "--------";
 } else {
 	$msg = null;
 }
@@ -81,24 +81,24 @@ if (null == $data['name']) {
 								<td align="left"><?php echo $data['gender']; ?></td>
 							</tr>
 							<tr bgcolor="#CF7070">
-								<td align="left" class="lf">Usia</td>
+								<td align="left" class="lf">Age</td>
 								<td style="font-weight:bold">:</td>
-								<td align="left"><?php echo $data['usia']; ?></td>
+								<td align="left"><?php echo $data['age']; ?></td>
 							</tr>
 							<tr>
-								<td align="left" class="lf">Nama_kk</td>
+								<td align="left" class="lf">Validation</td>
 								<td style="font-weight:bold">:</td>
-								<td align="left"><?php echo $data['nama_kk']; ?></td>
+								<td align="left"><?php echo $data['validation_sheet']; ?></td>
 							</tr>
 							<tr bgcolor="#CF7070">
-								<td align="left" class="lf">Alamat</td>
+								<td align="left" class="lf">Address</td>
 								<td style="font-weight:bold">:</td>
-								<td align="left"><?php echo $data['alamat']; ?></td>
+								<td align="left"><?php echo $data['adress']; ?></td>
 							</tr>
 							<tr>
-								<td align="left" class="lf">Nomor Telepon</td>
+								<td align="left" class="lf">Phone Number</td>
 								<td style="font-weight:bold">:</td>
-								<td align="left"><?php echo $data['no_telp']; ?></td>
+								<td align="left"><?php echo $data['phone_numb']; ?></td>
 							</tr>
 						</table>
 					</td>

@@ -7,15 +7,15 @@ if (!empty($_POST)) {
 	$name = $_POST['name'];
 	$id = $_POST['id'];
 	$gender = $_POST['gender'];
-	$usia = $_POST['usia'];
-	$nama_kk = $_POST['nama_kk'];
-	$alamat = $_POST['alamat'];
-	$no_telp = $_POST['no_telp'];
+	$usia = $_POST['age'];
+	$nama_kk = $_POST['validation_sheet'];
+	$alamat = $_POST['adress'];
+	$no_telp = $_POST['phone_numb'];
 
 	// insert data
 	$pdo = Database::connect();
 	$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-	$sql = "INSERT INTO table_the_iot_projects (name,id,gender,usia,nama_kk,alamat,no_telp) values(?, ?, ?, ?, ?,?,?)";
+	$sql = "INSERT INTO table_the_iot_projects (names,id,gender,age,validation_sheet,adress,phone_numb) values(?, ?, ?, ?, ?, ?, ?)";
 	$q = $pdo->prepare($sql);
 	$q->execute(array($name, $id, $gender, $usia, $nama_kk, $alamat, $no_telp));
 	Database::disconnect();
