@@ -15,7 +15,7 @@ if (!empty($_POST)) {
 	// insert data
 	$pdo = Database::connect();
 	$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-	$sql = "INSERT INTO table_the_iot_projects (names,id,gender,age,validation_sheet,adress,phone_numb) values(?, ?, ?, ?, ?, ?, ?)";
+	$sql = "INSERT INTO table_the_iot_projects (name,id,gender,age,validation_sheet,adress,phone_numb) values(?, ?, ?, ?, ?, ?, ?)";
 	$q = $pdo->prepare($sql);
 	$q->execute(array($name, $id, $gender, $usia, $nama_kk, $alamat, $no_telp));
 	Database::disconnect();

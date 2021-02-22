@@ -17,9 +17,13 @@ file_put_contents('UIDContainer.php', $Write);
 	<link href="https://fonts.googleapis.com/css2?family=Itim&display=swap" rel="stylesheet">
 	<link rel="preconnect" href="https://fonts.gstatic.com">
 	<link href="https://fonts.googleapis.com/css2?family=Lexend+Zetta&display=swap" rel="stylesheet">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker.css" rel="stylesheet" type="text/css" />
 	<link href="css/custom.css" rel="stylesheet">
 	<script src="js/bootstrap.min.js"></script>
 	<script src="jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.js"></script>
 	<script>
 		$(document).ready(function() {
 			$("#getUID").load("UIDContainer.php");
@@ -89,7 +93,7 @@ file_put_contents('UIDContainer.php', $Write);
 						<div class="control-group">
 							<label class="control-label mrg-182">Age</label>
 							<div class="controls">
-								<input name="age" type="text" placeholder="Isikan Usia" required>
+								<input id="tgl" name="age" type="text" placeholder="Isikan Usia" required>
 							</div>
 						</div>
 
@@ -122,6 +126,15 @@ file_put_contents('UIDContainer.php', $Write);
 			</div>
 		</div> <!-- /container -->
 	</div>
+	<script type="text/javascript">
+		$(function() {
+			$('#tgl').datepicker({
+				format: 'yyyy-mm-dd',
+				autoclose: true,
+				todayHighlight: true
+			}).datepicker('update', new Date());
+		});
+	</script>
 </body>
 
 </html>
