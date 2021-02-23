@@ -22,10 +22,10 @@ foreach ($pecahjudul as $w) {
             <li class="dropdown <?php echo ($page1 == "datajabatan" || $page1 == "Data Pegawai" || $page1 == "data" || $page1 == "poli" || $page1 == "dokter" || $page1 == "jadwal") ? "active" : ""; ?>">
                 <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-users"></i> <span>Administrasi</span></a>
                 <ul class="dropdown-menu">
-                    <li <?php echo (@$page1 == "datajabatan") ? "class=active" : ""; ?>><a class="nav-link" href="data_jabatan.php">Data Jabatan</a></li>
+                    <li <?php echo (@$page1 == "datajabatan") ? "class=active" : ""; ?>><a class="nav-link" href="jabatan.php">Data Jabatan</a></li>
                     <li <?php echo (@$page1 == "Data Pegawai") ? "class=active" : ""; ?>><a class="nav-link" href="pegawai.php">Data Pegawai</a></li>
                     <li <?php echo (@$page1 == "data") ? "class=active" : ""; ?>><a class="nav-link" href="data_paramedik.php">Data Paramedis</a></li>
-                    <li <?php echo (@$page1 == "poli") ? "class=active" : ""; ?>><a class="nav-link" href="data_poli.php">Data Poli</a></li>
+                    <li <?php echo (@$page1 == "poli") ? "class=active" : ""; ?>><a class="nav-link" href="poli.php">Data Poli</a></li>
                     <li <?php echo (@$page1 == "dokter") ? "class=active" : ""; ?>><a class="nav-link" href="data_dokter.php">Data Dokter</a></li>
                     <li <?php echo (@$page1 == "jadwal") ? "class=active" : ""; ?>><a class="nav-link" href="data_jadwal.php">Jadwal Dokter</a></li>
                 </ul>

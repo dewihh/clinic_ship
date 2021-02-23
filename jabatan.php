@@ -124,7 +124,7 @@
                                             <span data-target="#editUser" data-toggle="modal" data-id="<?php echo $row['id']; ?>" data-nama="<?php echo $row['nama_jabatan']; ?>">
                                                 <a class="btn btn-primary btn-action mr-1" title="Edit" data-toggle="tooltip"><i class="fas fa-pencil-alt"></i></a>
                                             </span>
-                                            <a class="btn btn-danger btn-action" data-toggle="tooltip" title="Hapus" data-confirm="Hapus Data|Apakah anda ingin menghapus data ini?" data-confirm-yes="window.location.href = 'admin/delete.php?type=data_jabatan&id=<?php echo $row['id']; ?>'" ;><i class="fas fa-trash"></i></a>
+                                            <a class="btn btn-danger btn-action" data-toggle="tooltip" title="Hapus" data-confirm="Hapus Data|Apakah anda ingin menghapus data ini?" data-confirm-yes="window.location.href = 'admin/delete.php?type=jabatan&id=<?php echo $row['id']; ?>'" ;><i class="fas fa-trash"></i></a>
                                         </td>
                                         </tr>
                                     <?php } ?>
