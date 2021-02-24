@@ -4,68 +4,25 @@
 <head>
     <?php
     $page1 = "data";
-    $page = "Catatan Data Jabatan";
+    $page = "Catatan Data Paramedik";
     session_start();
     include 'admin/connect.php';
     include "atoms/head.php";
+    include "atoms/tgl_ind.php";
+    include "atoms/umur.php";
 
     if (isset($_POST['submit'])) {
         $id = $_POST['iduser'];
-        $nama = $_POST['nama'];
-        $user = $_POST['username'];
-        $alam = $_POST['alamat'];
-        $old_pass = $_POST['old_password'];
-        $new_pass = $_POST['new_password'];
+        $nama = $_POST['kode_paramedik'];
+        $user = $_POST['nama_paramedik'];
+        $gend = $_POST['kelamin'];
+        $izin = $_POST['no_izin'];
+        $tgl = $_POST['tgl_lahir'];
+        $poli = $_POST['poli'];
 
-        if ($old_pass == "" && $new_pass == "") {
-            $up1 = mysqli_query($conn, "UPDATE pegawai SET nama_pegawai='$nama', username='$user', alamat='$alam' WHERE id='$id'");
-            echo '<script>
-			setTimeout(function() {
-				swal({
-					title: "Data Diubah",
-					text: "Data berhasil diubah!",
-					icon: "success"
-					});
-					}, 500);
-					</script>';
-        } elseif ($old_pass != "" && $new_pass != "") {
-            $cekpass = mysqli_query($conn, "SELECT * FROM pegawai WHERE id='$id' AND password='$old_pass'");
-            $cekada = mysqli_num_rows($cekpass);
-            if ($cekada == 0) {
-                echo '<script>
-						setTimeout(function() {
-							swal({
-								title: "Password salah",
-								text: "Password salah, cek kembali form password anda!",
-								icon: "error"
-								});
-								}, 500);
-								</script>';
-            } else {
-                $up2 = mysqli_query($conn, "UPDATE pegawai SET nama_pegawai='$nama', username='$user', password='$new_pass', alamat='$alam' WHERE id='$id'");
-                echo '<script>
-				setTimeout(function() {
-					swal({
-					title: "Data Diubah",
-					text: "Data atau Password berhasil diubah!",
-					icon: "success"
-					});
-					}, 500);
-				</script>';
-            }
-        }
-    }
+        $cekuser = mysqli_query($conn, "SELECT * FROM paramedik WHERE username='$nama'");
 
-    if (isset($_POST['submit2'])) {
-        $nama = $_POST['nama'];
-        $user = $_POST['username'];
-        $alam = $_POST['alamat'];
-        $pass = $_POST['password'];
-        $job = $_POST['pekerjaan'];
-
-        $cekuser = mysqli_query($conn, "SELECT * FROM pegawai WHERE username='$user'");
-        $baris = mysqli_num_rows($cekuser);
-        if ($baris >= 1) {
+        if ($conn->connect_error) {
             echo '<script>
 				setTimeout(function() {
 					swal({
@@ -76,12 +33,45 @@
 					}, 500);
 			</script>';
         } else {
-            $add = mysqli_query($conn, "INSERT INTO pegawai (username, password, nama_pegawai, alamat, pekerjaan) VALUES ('$user', '$pass', '$nama', '$alam', '$job')");
+            $add = mysqli_query($conn, "UPDATE paramedik SET kode_paramedik='$nama', nama_paramedik='$user',no_izin='$izin', kelamin='$gend', tgl_lahir='$tgl', poli='$poli' WHERE id='$id'");
             echo '<script>
 				setTimeout(function() {
 					swal({
 						title: "Berhasil!",
-						text: "Pegawai telah ditambahkan!",
+						text: "Jabatan telah ditambahkan!",
+						icon: "success"
+						});
+					}, 500);
+			</script>';
+        }
+    }
+
+    if (isset($_POST['submit2'])) {
+        $nama = $_POST['kode_paramedik'];
+        $user = $_POST['nama_paramedik'];
+        $gend = $_POST['kelamin'];
+        $izin = $_POST['no_izin'];
+        $tgl = $_POST['tgl_lahir'];
+        $poli = $_POST['poli'];
+
+        $cekuser = mysqli_query($conn, "SELECT * FROM paramedik WHERE username='$nama'");
+        if ($conn->connect_error) {
+            echo '<script>
+				setTimeout(function() {
+					swal({
+						title: "Username sudah digunakan",
+						text: "Username sudah digunakan, gunakan username lain!",
+						icon: "error"
+						});
+					}, 500);
+			</script>';
+        } else {
+            $add = mysqli_query($conn, "INSERT INTO paramedik (kode_paramedik,nama_paramedik,kelamin,no_izin,tgl_lahir,poli) VALUES ('$nama', '$user', '$gend', '$izin', '$tgl', '$poli')");
+            echo '<script>
+				setTimeout(function() {
+					swal({
+						title: "Berhasil!",
+						text: "Jabatan telah ditambahkan!",
 						icon: "success"
 						});
 					}, 500);
@@ -105,7 +95,7 @@
             <div class="main-content">
                 <section class="section">
                     <div class="section-header">
-                        <h1>Data Jabatan</h1>
+                        <h1>Data Paramedik</h1>
                     </div>
 
                     <div class="section-body">
@@ -126,36 +116,53 @@
                                                         <th class="text-center">
                                                             #
                                                         </th>
-                                                        <th>Nama Pegawai</th>
-                                                        <th>Alamat</th>
-                                                        <th>Pekerjaan</th>
+                                                        <th>Kode Paramedik</th>
+                                                        <th>Nama Paramedik</th>
+                                                        <th>Jenis Kelamin</th>
+                                                        <th>No Izin Pramedis</th>
+                                                        <th>Tanggal Lahir</th>
+                                                        <th>Usia</th>
+                                                        <th>Poli</th>
                                                         <th>Action</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
                                                     <?php
-                                                    $sql = mysqli_query($conn, "SELECT * FROM pegawai");
+                                                    $sql = mysqli_query($conn, "SELECT * FROM paramedik");
                                                     $i = 0;
                                                     while ($row = mysqli_fetch_array($sql)) {
                                                         $i++;
                                                     ?>
                                                         <tr>
                                                             <td><?php echo $i; ?></td>
-                                                            <td><?php echo ucwords($row['nama_pegawai']); ?></td>
-                                                            <td><?php echo ucwords($row['alamat']); ?></td>
+                                                            <td><?php echo ucwords($row['kode_paramedik']); ?></td>
+                                                            <td><?php echo ucwords($row['nama_paramedik']); ?></td>
                                                             <td><?php
-                                                                if ($row['pekerjaan'] == '1') {
-                                                                    echo '<div class="badge badge-pill badge-primary mb-1">Dokter';
+                                                                if ($row['kelamin'] == '1') {
+                                                                    echo '<div class="badge badge-pill badge-primary mb-1">Laki-Laki';
                                                                 } else {
-                                                                    echo '<div class="badge badge-pill badge-success mb-1">Apoteker';
+                                                                    echo '<div class="badge badge-pill badge-success mb-1">Perempuan';
                                                                 } ?>
+                                                            <td><?php echo ucwords($row['no_izin']); ?></td>
+                                                            <td><?php if ($row['tgl_lahir'] == "") {
+                                                                    echo "-";
+                                                                } else {
+                                                                    echo tgl_indo($row['tgl_lahir']);
+                                                                } ?></td>
+                                                            <td><?php if ($row['tgl_lahir'] == "") {
+                                                                    echo "-";
+                                                                } else {
+                                                                    umur($row['tgl_lahir']);
+                                                                } ?></td>
+                                                            <td><?php echo ucwords($row['poli']); ?></td>
+
                                         </div>
                                         </td>
                                         <td>
-                                            <span data-target="#editUser" data-toggle="modal" data-id="<?php echo $row['id']; ?>" data-nama="<?php echo $row['nama_pegawai']; ?>" data-user="<?php echo $row['username']; ?>" data-alam="<?php echo $row['alamat']; ?>">
+                                            <span data-target="#editUser" data-toggle="modal" data-id="<?php echo $row['id']; ?>" data-nama="<?php echo $row['kode_paramedik']; ?>" data-user="<?php echo $row['nama_paramedik']; ?>" data-gend="<?php echo $row['kelamin']; ?>" data-izin="<?php echo $row['no_izin']; ?>" data-tgl="<?php echo $row['tgl_lahir']; ?>" data-poli="<?php echo $row['poli']; ?>">
                                                 <a class="btn btn-primary btn-action mr-1" title="Edit" data-toggle="tooltip"><i class="fas fa-pencil-alt"></i></a>
                                             </span>
-                                            <a class="btn btn-danger btn-action" data-toggle="tooltip" title="Hapus" data-confirm="Hapus Data|Apakah anda ingin menghapus data ini?" data-confirm-yes="window.location.href = 'admin/delete.php?type=pegawai&id=<?php echo $row['id']; ?>'" ;><i class="fas fa-trash"></i></a>
+                                            <a class="btn btn-danger btn-action" data-toggle="tooltip" title="Hapus" data-confirm="Hapus Data|Apakah anda ingin menghapus data ini?" data-confirm-yes="window.location.href = 'admin/delete.php?type=paramedik&id=<?php echo $row['id']; ?>'" ;><i class="fas fa-trash"></i></a>
                                         </td>
                                         </tr>
                                     <?php } ?>
@@ -174,7 +181,7 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title">Tambah Pegawai</h5>
+                        <h5 class="modal-title">Tambah Paramedik</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -182,40 +189,55 @@
                     <div class="modal-body">
                         <form action="" method="POST" class="needs-validation" novalidate="">
                             <div class="form-group row">
-                                <label class="col-sm-3 col-form-label">Nama Lengkap</label>
+                                <label class="col-sm-3 col-form-label">Kode Paramedik</label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" name="nama" required="">
+                                    <input type="text" class="form-control" name="kode_paramedik" required="">
                                     <div class="invalid-feedback">
                                         Mohon data diisi!
                                     </div>
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label class="col-sm-3 col-form-label">Username</label>
+                                <label class="col-sm-3 col-form-label">Nama Paramedik</label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" name="username" required="">
+                                    <input type="text" class="form-control" name="nama_paramedik" required="">
                                     <div class="invalid-feedback">
                                         Mohon data diisi!
                                     </div>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label>Pekerjaan</label>
-                                <select class="form-control selectric" name="pekerjaan">
-                                    <option value="1">Dokter</option>
-                                    <option value="2">Apoteker</option>
+                                <label>Jenis Kelamin</label>
+                                <select class="form-control selectric" name="kelamin">
+                                    <option value="1">Laki-Laki</option>
+                                    <option value="2">Perempuan</option>
                                 </select>
                             </div>
-                            <div class="form-group">
-                                <label>Alamat</label>
-                                <textarea class="form-control" required="" name="alamat"></textarea>
-                            </div>
                             <div class="form-group row">
-                                <label class="col-sm-3 col-form-label">Password</label>
+                                <label class="col-sm-3 col-form-label">No izin Paramedik</label>
                                 <div class="col-sm-9">
-                                    <input type="password" name="password" class="form-control">
+                                    <input type="text" class="form-control" name="no_izin" required="">
+                                    <div class="invalid-feedback">
+                                        Mohon data diisi!
+                                    </div>
                                 </div>
                             </div>
+                            <div class="form-group row">
+                                <label class="col-sm-3 col-form-label">Tanggal lahir</label>
+                                <div class="form-group col-sm-9">
+                                    <input type="text" class="form-control datepicker" id="getTgl" name="tgl_lahir">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-3 col-form-label">Poli</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" name="poli" required="">
+                                    <div class="invalid-feedback">
+                                        Mohon data diisi!
+                                    </div>
+                                </div>
+                            </div>
+
                     </div>
                     <div class="modal-footer bg-whitesmoke br">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -238,43 +260,57 @@
                     <div class="modal-body">
                         <form action="" method="POST" class="needs-validation" novalidate="">
                             <div class="form-group row">
-                                <label class="col-sm-3 col-form-label">Nama Lengkap</label>
+                                <label class="col-sm-3 col-form-label">Kode Paramedik</label>
                                 <div class="col-sm-9">
                                     <input type="hidden" class="form-control" name="iduser" required="" id="getId">
-                                    <input type="text" class="form-control" name="nama" required="" id="getNama">
+                                    <input type="text" class="form-control" name="kode_paramedik" required="" id="getNama">
                                     <div class="invalid-feedback">
                                         Mohon data diisi!
                                     </div>
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label class="col-sm-3 col-form-label">Username</label>
+                                <label class="col-sm-3 col-form-label">Nama Paramedik</label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" name="username" required="" id="getUser">
+                                    <input type="text" class="form-control" name="nama_paramedik" required="" id="getUser">
                                     <div class="invalid-feedback">
                                         Mohon data diisi!
                                     </div>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label>Alamat</label>
-                                <textarea class="form-control" required="" name="alamat" id="getAddrs"></textarea>
-                            </div>
-                            <div class="alert alert-light text-center">
-                                Jika password tidak diganti, form dibawah dikosongi saja.
+                                <label>Jenis Kelamin</label>
+                                <select class="form-control selectric" name="kelamin" id="getGend">
+                                    <option value="1">Laki-Laki</option>
+                                    <option value="2">Perempuan</option>
+                                </select>
                             </div>
                             <div class="form-group row">
-                                <label class="col-sm-3 col-form-label">Password Lama</label>
+                                <label class="col-sm-3 col-form-label">No izin Paramedik</label>
                                 <div class="col-sm-9">
-                                    <input type="password" name="old_password" class="form-control">
+                                    <input type="text" class="form-control" name="no_izin" required="" id="getIzin">
+                                    <div class="invalid-feedback">
+                                        Mohon data diisi!
+                                    </div>
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label class="col-sm-3 col-form-label">Password Baru</label>
-                                <div class="col-sm-9">
-                                    <input type="password" name="new_password" class="form-control">
+                                <label class="col-sm-3 col-form-label">Tanggal lahir</label>
+                                <div class="form-group col-sm-9">
+                                    <input type="text" class="form-control datepicker" id="getTgl" name="tgl_lahir" id="getTgl">
                                 </div>
                             </div>
+                            <div class="form-group row">
+                                <label class="col-sm-3 col-form-label">Poli</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" name="poli" required="" id="getPoli">
+                                    <div class="invalid-feedback">
+                                        Mohon data diisi!
+                                    </div>
+                                </div>
+                            </div>
+
+
                     </div>
                     <div class="modal-footer bg-whitesmoke br">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -293,13 +329,19 @@
             var button = $(event.relatedTarget)
             var nama = button.data('nama')
             var user = button.data('user')
-            var alam = button.data('alam')
+            var gend = button.data('gend')
+            var izin = button.data('izin')
+            var tgl = button.data('tgl')
+            var poli = button.data('poli')
             var id = button.data('id')
             var modal = $(this)
             modal.find('#getId').val(id)
             modal.find('#getNama').val(nama)
             modal.find('#getUser').val(user)
-            modal.find('#getAddrs').val(alam)
+            modal.find('#getGend').val(gend)
+            modal.find('#getIzin').val(izin)
+            modal.find('#getTgl').val(tgl)
+            modal.find('#getPoli').val(poli)
         })
     </script>
 </body>
