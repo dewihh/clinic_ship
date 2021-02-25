@@ -24,9 +24,19 @@ $output = mysqli_fetch_array($nama);
                 <div class="dropdown-title"><i class="fas fa-circle text-success"></i>
                     <?php
                     if ($output["pekerjaan"] == "1") {
-                        echo "Dokter";
-                    } else {
+                        echo "Dokter Umum";
+                    } elseif ($output["pekerjaan"] == "2") {
                         echo "Apoteker";
+                    } elseif ($output["pekerjaan"] == "3") {
+                        echo "Dokter Gigi";
+                    } elseif ($output["pekerjaan"] == "4") {
+                        echo "Dokter Anak";
+                    } elseif ($output["pekerjaan"] == "5") {
+                        echo "Dokter KIA";
+                    } elseif ($output["pekerjaan"] == "6") {
+                        echo "Staff Administrasi";
+                    } else {
+                        echo "Kasir";
                     }
                     ?>
                 </div>

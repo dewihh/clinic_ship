@@ -18,7 +18,7 @@
         $new_pass = $_POST['new_password'];
 
         if ($old_pass == "" && $new_pass == "") {
-            $up1 = mysqli_query($conn, "UPDATE pegawai SET nama_pegawai='$nama', username='$user', alamat='$alam' WHERE id='$id'");
+            $up1 = mysqli_query($conn, "UPDATE dokter SET nama_dokter='$nama', username='$user', alamat='$alam' WHERE id='$id'");
             echo '<script>
 			setTimeout(function() {
 				swal({
@@ -29,7 +29,7 @@
 					}, 500);
 					</script>';
         } elseif ($old_pass != "" && $new_pass != "") {
-            $cekpass = mysqli_query($conn, "SELECT * FROM pegawai WHERE id='$id' AND password='$old_pass'");
+            $cekpass = mysqli_query($conn, "SELECT * FROM dokter WHERE id='$id' AND password='$old_pass'");
             $cekada = mysqli_num_rows($cekpass);
             if ($cekada == 0) {
                 echo '<script>
@@ -42,7 +42,7 @@
 								}, 500);
 								</script>';
             } else {
-                $up2 = mysqli_query($conn, "UPDATE pegawai SET nama_pegawai='$nama', username='$user', password='$new_pass', alamat='$alam' WHERE id='$id'");
+                $up2 = mysqli_query($conn, "UPDATE dokter SET nama_dokter='$nama', username='$user', password='$new_pass', alamat='$alam' WHERE id='$id'");
                 echo '<script>
 				setTimeout(function() {
 					swal({
@@ -63,7 +63,7 @@
         $pass = $_POST['password'];
         $job = $_POST['pekerjaan'];
 
-        $cekuser = mysqli_query($conn, "SELECT * FROM pegawai WHERE username='$user'");
+        $cekuser = mysqli_query($conn, "SELECT * FROM dokter WHERE username='$user'");
         $baris = mysqli_num_rows($cekuser);
         if ($baris >= 1) {
             echo '<script>
@@ -76,12 +76,12 @@
 					}, 500);
 			</script>';
         } else {
-            $add = mysqli_query($conn, "INSERT INTO pegawai (username, password, nama_pegawai, alamat, pekerjaan) VALUES ('$user', '$pass', '$nama', '$alam', '$job')");
+            $add = mysqli_query($conn, "INSERT INTO dokter (username, password, nama_dokter, alamat, pekerjaan) VALUES ('$user', '$pass', '$nama', '$alam', '$job')");
             echo '<script>
 				setTimeout(function() {
 					swal({
 						title: "Berhasil!",
-						text: "Pegawai telah ditambahkan!",
+						text: "dokter telah ditambahkan!",
 						icon: "success"
 						});
 					}, 500);
@@ -115,7 +115,7 @@
                                     <div class="card-header">
                                         <h4><?php echo $page; ?></h4>
                                         <div class="card-header-action">
-                                            <a href="#" class="btn btn-primary" data-target="#addUser" data-toggle="modal">Tambah Pegawai</a>
+                                            <a href="#" class="btn btn-primary" data-target="#addUser" data-toggle="modal">Tambah dokter</a>
                                         </div>
                                     </div>
                                     <div class="card-body">
@@ -126,7 +126,7 @@
                                                         <th class="text-center">
                                                             #
                                                         </th>
-                                                        <th>Nama Pegawai</th>
+                                                        <th>Nama dokter</th>
                                                         <th>Alamat</th>
                                                         <th>Pekerjaan</th>
                                                         <th>Action</th>
@@ -134,28 +134,34 @@
                                                 </thead>
                                                 <tbody>
                                                     <?php
-                                                    $sql = mysqli_query($conn, "SELECT * FROM pegawai");
+                                                    $sql = mysqli_query($conn, "SELECT * FROM dokter");
                                                     $i = 0;
                                                     while ($row = mysqli_fetch_array($sql)) {
                                                         $i++;
                                                     ?>
                                                         <tr>
                                                             <td><?php echo $i; ?></td>
-                                                            <td><?php echo ucwords($row['nama_pegawai']); ?></td>
+                                                            <td><?php echo ucwords($row['nama_dokter']); ?></td>
                                                             <td><?php echo ucwords($row['alamat']); ?></td>
                                                             <td><?php
                                                                 if ($row['pekerjaan'] == '1') {
-                                                                    echo '<div class="badge badge-pill badge-primary mb-1">Dokter';
+                                                                    echo '<div class="badge badge-pill badge-primary mb-1">Dokter Umum';
+                                                                } else if ($row['pekerjaan'] == '2') {
+                                                                    echo '<div class="badge badge-pill badge-success mb-1">Dokter Gigi';
+                                                                } else if ($row['pekerjaan'] == '3') {
+                                                                    echo '<div class="badge badge-pill badge-secondary mb-1">Dokter Anak';
                                                                 } else {
-                                                                    echo '<div class="badge badge-pill badge-success mb-1">Apoteker';
-                                                                } ?>
+                                                                    echo '<div class="badge badge-pill badge-info mb-1">Dokter KIA';
+                                                                }
+
+                                                                ?>
                                         </div>
                                         </td>
                                         <td>
-                                            <span data-target="#editUser" data-toggle="modal" data-id="<?php echo $row['id']; ?>" data-nama="<?php echo $row['nama_pegawai']; ?>" data-user="<?php echo $row['username']; ?>" data-alam="<?php echo $row['alamat']; ?>">
+                                            <span data-target="#editUser" data-toggle="modal" data-id="<?php echo $row['id']; ?>" data-nama="<?php echo $row['nama_dokter']; ?>" data-user="<?php echo $row['username']; ?>" data-alam="<?php echo $row['alamat']; ?>">
                                                 <a class="btn btn-primary btn-action mr-1" title="Edit" data-toggle="tooltip"><i class="fas fa-pencil-alt"></i></a>
                                             </span>
-                                            <a class="btn btn-danger btn-action" data-toggle="tooltip" title="Hapus" data-confirm="Hapus Data|Apakah anda ingin menghapus data ini?" data-confirm-yes="window.location.href = 'admin/delete.php?type=pegawai&id=<?php echo $row['id']; ?>'" ;><i class="fas fa-trash"></i></a>
+                                            <a class="btn btn-danger btn-action" data-toggle="tooltip" title="Hapus" data-confirm="Hapus Data|Apakah anda ingin menghapus data ini?" data-confirm-yes="window.location.href = 'admin/delete.php?type=dokter&id=<?php echo $row['id']; ?>'" ;><i class="fas fa-trash"></i></a>
                                         </td>
                                         </tr>
                                     <?php } ?>
@@ -174,7 +180,7 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title">Tambah Pegawai</h5>
+                        <h5 class="modal-title">Tambah dokter</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -202,8 +208,10 @@
                             <div class="form-group">
                                 <label>Pekerjaan</label>
                                 <select class="form-control selectric" name="pekerjaan">
-                                    <option value="1">Dokter</option>
-                                    <option value="2">Apoteker</option>
+                                    <option value="1">Dokter Umum</option>
+                                    <option value="2">Dokter Gigi</option>
+                                    <option value="3">Dokter Anak</option>
+                                    <option value="4">Dokter KIA</option>
                                 </select>
                             </div>
                             <div class="form-group">

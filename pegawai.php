@@ -145,10 +145,23 @@
                                                             <td><?php echo ucwords($row['alamat']); ?></td>
                                                             <td><?php
                                                                 if ($row['pekerjaan'] == '1') {
-                                                                    echo '<div class="badge badge-pill badge-primary mb-1">Dokter';
-                                                                } else {
+                                                                    echo '<div class="badge badge-pill badge-primary mb-1">Dokter Umum';
+                                                                } elseif ($row['pekerjaan'] == '2') {
                                                                     echo '<div class="badge badge-pill badge-success mb-1">Apoteker';
-                                                                } ?>
+                                                                } elseif ($row['pekerjaan'] == '3') {
+                                                                    echo '<div class="badge badge-pill badge-secondary mb-1">Dokter Gigi';
+                                                                } elseif ($row['pekerjaan'] == '4') {
+                                                                    echo '<div class="badge badge-pill badge-info mb-1">Dokter Anak';
+                                                                } elseif ($row['pekerjaan'] == '5') {
+                                                                    echo '<div class="badge badge-pill badge-light mb-1">Dokter KIA';
+                                                                } elseif ($row['pekerjaan'] == '6') {
+                                                                    echo '<div class="badge badge-pill badge-dark mb-1">Staff Administrasi';
+                                                                } else {
+                                                                    echo '<div class="badge badge-pill badge-warning mb-1">Kasir';
+                                                                }
+
+
+                                                                ?>
                                         </div>
                                         </td>
                                         <td>
@@ -202,8 +215,13 @@
                             <div class="form-group">
                                 <label>Pekerjaan</label>
                                 <select class="form-control selectric" name="pekerjaan">
-                                    <option value="1">Dokter</option>
+                                    <option value="1">Dokter Umum</option>
                                     <option value="2">Apoteker</option>
+                                    <option value="3">Dokter Gigi</option>
+                                    <option value="4">Dokter Anak</option>
+                                    <option value="5">Dokter KIA</option>
+                                    <option value="6">Staff Administrasi</option>
+                                    <option value="7">Kasir</option>
                                 </select>
                             </div>
                             <div class="form-group">
