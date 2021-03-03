@@ -1,4 +1,4 @@
-<h2 class="section-title"><?php echo ucwords($idnama); ?> (<?php echo umur($pasien['tgl_lahir']); ?>) </h2>
+<h2 class="section-title"><?php echo ucwords($idnama); ?> (<?php echo umur($pasien['age']); ?>) </h2>
 <p class="section-lead">
     <?php
     $rekam = mysqli_query($conn, "SELECT * FROM riwayat_penyakit WHERE id_pasien='$idid'");

@@ -16,7 +16,7 @@
         $nama = $_POST['kode_paramedik'];
         $user = $_POST['nama_paramedik'];
         $gend = $_POST['kelamin'];
-        $izin = $_POST['no_izin'];
+        $sipp = $_POST['sipp'];
         $tgl = $_POST['tgl_lahir'];
         $poli = $_POST['poli'];
 
@@ -33,7 +33,7 @@
 					}, 500);
 			</script>';
         } else {
-            $add = mysqli_query($conn, "UPDATE paramedik SET kode_paramedik='$nama', nama_paramedik='$user',no_izin='$izin', kelamin='$gend', tgl_lahir='$tgl', poli='$poli' WHERE id='$id'");
+            $add = mysqli_query($conn, "UPDATE paramedik SET kode_paramedik='$nama', nama_paramedik='$user', sipp='$sipp', kelamin='$gend', tgl_lahir='$tgl', poli='$poli' WHERE id='$id'");
             echo '<script>
 				setTimeout(function() {
 					swal({
@@ -50,7 +50,7 @@
         $nama = $_POST['kode_paramedik'];
         $user = $_POST['nama_paramedik'];
         $gend = $_POST['kelamin'];
-        $izin = $_POST['no_izin'];
+        $sipp = $_POST['sipp'];
         $tgl = $_POST['tgl_lahir'];
         $poli = $_POST['poli'];
 
@@ -66,7 +66,7 @@
 					}, 500);
 			</script>';
         } else {
-            $add = mysqli_query($conn, "INSERT INTO paramedik (kode_paramedik,nama_paramedik,kelamin,no_izin,tgl_lahir,poli) VALUES ('$nama', '$user', '$gend', '$izin', '$tgl', '$poli')");
+            $add = mysqli_query($conn, "INSERT INTO paramedik (kode_paramedik,nama_paramedik,kelamin,sipp,tgl_lahir,poli) VALUES ('$nama', '$user', '$gend', '$izin', '$tgl', '$poli')");
             echo '<script>
 				setTimeout(function() {
 					swal({
@@ -119,7 +119,7 @@
                                                         <th>Kode Paramedik</th>
                                                         <th>Nama Paramedik</th>
                                                         <th>Jenis Kelamin</th>
-                                                        <th>No Izin Pramedis</th>
+                                                        <th>SIPP</th>
                                                         <th>Tanggal Lahir</th>
                                                         <th>Usia</th>
                                                         <th>Poli</th>
@@ -142,8 +142,8 @@
                                                                     echo '<div class="badge badge-pill badge-primary mb-1">Laki-Laki';
                                                                 } else {
                                                                     echo '<div class="badge badge-pill badge-success mb-1">Perempuan';
-                                                                } ?>
-                                                            <td><?php echo ucwords($row['no_izin']); ?></td>
+                                                                } ?></td>
+                                                            <td><?php echo ucwords($row['sipp']); ?></td>
                                                             <td><?php if ($row['tgl_lahir'] == "") {
                                                                     echo "-";
                                                                 } else {
@@ -159,7 +159,7 @@
                                         </div>
                                         </td>
                                         <td>
-                                            <span data-target="#editUser" data-toggle="modal" data-id="<?php echo $row['id']; ?>" data-nama="<?php echo $row['kode_paramedik']; ?>" data-user="<?php echo $row['nama_paramedik']; ?>" data-gend="<?php echo $row['kelamin']; ?>" data-izin="<?php echo $row['no_izin']; ?>" data-tgl="<?php echo $row['tgl_lahir']; ?>" data-poli="<?php echo $row['poli']; ?>">
+                                            <span data-target="#editUser" data-toggle="modal" data-id="<?php echo $row['id']; ?>" data-nama="<?php echo $row['kode_paramedik']; ?>" data-user="<?php echo $row['nama_paramedik']; ?>" data-gend="<?php echo $row['kelamin']; ?>" data-sipp="<?php echo $row['sipp']; ?>" data-tgl="<?php echo $row['tgl_lahir']; ?>" data-poli="<?php echo $row['poli']; ?>">
                                                 <a class="btn btn-primary btn-action mr-1" title="Edit" data-toggle="tooltip"><i class="fas fa-pencil-alt"></i></a>
                                             </span>
                                             <a class="btn btn-danger btn-action" data-toggle="tooltip" title="Hapus" data-confirm="Hapus Data|Apakah anda ingin menghapus data ini?" data-confirm-yes="window.location.href = 'admin/delete.php?type=paramedik&id=<?php echo $row['id']; ?>'" ;><i class="fas fa-trash"></i></a>
@@ -214,9 +214,9 @@
                                 </select>
                             </div>
                             <div class="form-group row">
-                                <label class="col-sm-3 col-form-label">No izin Paramedik</label>
+                                <label class="col-sm-3 col-form-label">SIPP</label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" name="no_izin" required="">
+                                    <input type="text" class="form-control" name="sipp" required="">
                                     <div class="invalid-feedback">
                                         Mohon data diisi!
                                     </div>
@@ -286,9 +286,9 @@
                                 </select>
                             </div>
                             <div class="form-group row">
-                                <label class="col-sm-3 col-form-label">No izin Paramedik</label>
+                                <label class="col-sm-3 col-form-label">SIPP</label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" name="no_izin" required="" id="getIzin">
+                                    <input type="text" class="form-control" name="sipp" required="" id="getIzin">
                                     <div class="invalid-feedback">
                                         Mohon data diisi!
                                     </div>
@@ -330,7 +330,7 @@
             var nama = button.data('nama')
             var user = button.data('user')
             var gend = button.data('gend')
-            var izin = button.data('izin')
+            var sipp = button.data('sipp')
             var tgl = button.data('tgl')
             var poli = button.data('poli')
             var id = button.data('id')
@@ -339,7 +339,7 @@
             modal.find('#getNama').val(nama)
             modal.find('#getUser').val(user)
             modal.find('#getGend').val(gend)
-            modal.find('#getIzin').val(izin)
+            modal.find('#getSIPP').val(sipp)
             modal.find('#getTgl').val(tgl)
             modal.find('#getPoli').val(poli)
         })

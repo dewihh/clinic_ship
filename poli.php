@@ -106,7 +106,7 @@
                                                         <th class="text-center">
                                                             #
                                                         </th>
-                                                        <th>Nama Polii</th>
+                                                        <th>Nama Poli</th>
                                                         <th>Ruangan Poli</th>
                                                         <th>Action</th>
                                                     </tr>

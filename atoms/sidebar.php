@@ -31,16 +31,16 @@ foreach ($pecahjudul as $w) {
                 </ul>
             </li>
 
-            <li class="dropdown <?php echo ($page1 == "ruang" || $page1 == "riwayatinap") ? "active" : ""; ?>">
+            <li class="dropdown <?php echo ($page1 == "Data Pasien" || $page1 == "det" || $page1 == "Rawat Jalan") ? "active" : ""; ?>">
                 <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-user-injured"></i> <span>Data Pasien</span></a>
                 <ul class="dropdown-menu">
-                    <li <?php echo (@$page1 == "ruang") ? "class=active" : ""; ?>><a class="nav-link" href="pasien.php">Catatan Pasien</a></li>
-                    <li <?php echo (@$page1 == "riwayatinap") ? "class=active" : ""; ?>><a class="nav-link" href="riwayat_inap.php">Rekam Medis</a></li>
+                    <li <?php echo ($page1 == "Data Pasien" || @$page1 == "det") ? "class=active" : ""; ?>><a class="nav-link" href="pasien.php">Catatan Pasien</a></li>
+                    <li <?php echo (@$page1 == "Rawat Jalan") ? "class=active" : ""; ?>><a class="nav-link" href="rawat_jalan.php">Rekam Medis</a></li>
                 </ul>
             </li>
 
-            <li <?php echo ($page == "Data Obat") ? "class=active" : ""; ?>><a class="nav-link" href="obat.php"><i class="fas fa-briefcase-medical"></i> <span>Farmasi</span></a></li>
-            <li <?php echo ($page == "Data Pasien" || @$page1 == "det") ? "class=active" : ""; ?>><a class="nav-link" href="pasien.php"><i class="fas fa-dollar-sign"></i> <span>Keuangan</span></a></li>
+            <li <?php echo ($page1 == "Obat") ? "class=active" : ""; ?>><a class="nav-link" href="obat.php"><i class="fas fa-briefcase-medical"></i> <span>Farmasi</span></a></li>
+            <li <?php echo ($page == "" || @$page1 == "") ? "class=active" : ""; ?>><a class="nav-link" href="pasien.php"><i class="fas fa-dollar-sign"></i> <span>Keuangan</span></a></li>
 
 
     </aside>

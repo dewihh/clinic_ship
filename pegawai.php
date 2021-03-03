@@ -11,14 +11,17 @@
 
     if (isset($_POST['submit'])) {
         $id = $_POST['iduser'];
+        $kode = $_POST['id_pegawai'];
         $nama = $_POST['nama'];
+        $gend = $_POST['kelamin'];
+        $npwp = $_POST['npwp'];
         $user = $_POST['username'];
         $alam = $_POST['alamat'];
         $old_pass = $_POST['old_password'];
         $new_pass = $_POST['new_password'];
 
         if ($old_pass == "" && $new_pass == "") {
-            $up1 = mysqli_query($conn, "UPDATE pegawai SET nama_pegawai='$nama', username='$user', alamat='$alam' WHERE id='$id'");
+            $up1 = mysqli_query($conn, "UPDATE pegawai SET id_pegawai='$kode', nama_pegawai='$nama', kelamin='$gend', npwp='$npwp', username='$user', alamat='$alam' WHERE id='$id'");
             echo '<script>
 			setTimeout(function() {
 				swal({
@@ -42,7 +45,7 @@
 								}, 500);
 								</script>';
             } else {
-                $up2 = mysqli_query($conn, "UPDATE pegawai SET nama_pegawai='$nama', username='$user', password='$new_pass', alamat='$alam' WHERE id='$id'");
+                $up2 = mysqli_query($conn, "UPDATE pegawai SET id_pegawai='$kode', nama_pegawai='$nama', kelamin='$gend', npwp='$npwp', username='$user', password='$new_pass', alamat='$alam' WHERE id='$id'");
                 echo '<script>
 				setTimeout(function() {
 					swal({
@@ -57,7 +60,10 @@
     }
 
     if (isset($_POST['submit2'])) {
+        $kode = $_POST['id_pegawai'];
         $nama = $_POST['nama'];
+        $gend = $_POST['kelamin'];
+        $npwp = $_POST['npwp'];
         $user = $_POST['username'];
         $alam = $_POST['alamat'];
         $pass = $_POST['password'];
@@ -76,7 +82,7 @@
 					}, 500);
 			</script>';
         } else {
-            $add = mysqli_query($conn, "INSERT INTO pegawai (username, password, nama_pegawai, alamat, pekerjaan) VALUES ('$user', '$pass', '$nama', '$alam', '$job')");
+            $add = mysqli_query($conn, "INSERT INTO pegawai (username, password, id_pegawai, nama_pegawai, kelamin, npwp, alamat, pekerjaan) VALUES ('$user', '$pass', '$kode', '$nama', '$gend', $npwp, '$alam', '$job')");
             echo '<script>
 				setTimeout(function() {
 					swal({
@@ -126,8 +132,11 @@
                                                         <th class="text-center">
                                                             #
                                                         </th>
+                                                        <th>ID Pegawai</th>
                                                         <th>Nama Pegawai</th>
                                                         <th>Alamat</th>
+                                                        <th>Jenis Kelamin</th>
+                                                        <th>NPWP</th>
                                                         <th>Pekerjaan</th>
                                                         <th>Action</th>
                                                     </tr>
@@ -141,8 +150,16 @@
                                                     ?>
                                                         <tr>
                                                             <td><?php echo $i; ?></td>
+                                                            <td><?php echo ucwords($row['id_pegawai']); ?></td>
                                                             <td><?php echo ucwords($row['nama_pegawai']); ?></td>
                                                             <td><?php echo ucwords($row['alamat']); ?></td>
+                                                            <td><?php
+                                                                if ($row['kelamin'] == '1') {
+                                                                    echo '<div class="badge badge-pill badge-primary mb-1">Laki-Laki';
+                                                                } else {
+                                                                    echo '<div class="badge badge-pill badge-success mb-1">Perempuan';
+                                                                } ?></td>
+                                                            <td><?php echo ucwords($row['npwp']); ?></td>
                                                             <td><?php
                                                                 if ($row['pekerjaan'] == '1') {
                                                                     echo '<div class="badge badge-pill badge-primary mb-1">Dokter Umum';
@@ -159,13 +176,11 @@
                                                                 } else {
                                                                     echo '<div class="badge badge-pill badge-warning mb-1">Kasir';
                                                                 }
-
-
                                                                 ?>
                                         </div>
                                         </td>
                                         <td>
-                                            <span data-target="#editUser" data-toggle="modal" data-id="<?php echo $row['id']; ?>" data-nama="<?php echo $row['nama_pegawai']; ?>" data-user="<?php echo $row['username']; ?>" data-alam="<?php echo $row['alamat']; ?>">
+                                            <span data-target="#editUser" data-toggle="modal" data-id="<?php echo $row['id']; ?>" data-kode="<?php echo $row['id_pegawai']; ?>" data-nama="<?php echo $row['nama_pegawai']; ?>" data-gend="<?php echo $row['kelamin']; ?>" data-npwp="<?php echo $row['npwp'] ?>" data-user="<?php echo $row['username']; ?>" data-alam="<?php echo $row['alamat']; ?>">
                                                 <a class="btn btn-primary btn-action mr-1" title="Edit" data-toggle="tooltip"><i class="fas fa-pencil-alt"></i></a>
                                             </span>
                                             <a class="btn btn-danger btn-action" data-toggle="tooltip" title="Hapus" data-confirm="Hapus Data|Apakah anda ingin menghapus data ini?" data-confirm-yes="window.location.href = 'admin/delete.php?type=pegawai&id=<?php echo $row['id']; ?>'" ;><i class="fas fa-trash"></i></a>
@@ -195,9 +210,34 @@
                     <div class="modal-body">
                         <form action="" method="POST" class="needs-validation" novalidate="">
                             <div class="form-group row">
+                                <label class="col-sm-3 col-form-label">ID Pegawai</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" name="id_pegawai" required="">
+                                    <div class="invalid-feedback">
+                                        Mohon data diisi!
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
                                 <label class="col-sm-3 col-form-label">Nama Lengkap</label>
                                 <div class="col-sm-9">
                                     <input type="text" class="form-control" name="nama" required="">
+                                    <div class="invalid-feedback">
+                                        Mohon data diisi!
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Jenis Kelamin</label>
+                                <select class="form-control selectric" name="kelamin">
+                                    <option value="1">Laki-Laki</option>
+                                    <option value="2">Perempuan</option>
+                                </select>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-3 col-form-label">NPWP</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" name="npwp" required="">
                                     <div class="invalid-feedback">
                                         Mohon data diisi!
                                     </div>
@@ -256,10 +296,36 @@
                     <div class="modal-body">
                         <form action="" method="POST" class="needs-validation" novalidate="">
                             <div class="form-group row">
-                                <label class="col-sm-3 col-form-label">Nama Lengkap</label>
+                                <label class="col-sm-3 col-form-label">Nama Pegawai</label>
                                 <div class="col-sm-9">
                                     <input type="hidden" class="form-control" name="iduser" required="" id="getId">
                                     <input type="text" class="form-control" name="nama" required="" id="getNama">
+                                    <div class="invalid-feedback">
+                                        Mohon data diisi!
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-3 col-form-label">ID Pegawai</label>
+                                <div class="col-sm-9">
+
+                                    <input type="text" class="form-control" name="id_pegawai" required="" id="getKode">
+                                    <div class="invalid-feedback">
+                                        Mohon data diisi!
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Jenis Kelamin</label>
+                                <select class="form-control selectric" name="kelamin" id="getGend">
+                                    <option value="1">Laki-Laki</option>
+                                    <option value="2">Perempuan</option>
+                                </select>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-3 col-form-label">NPWP</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" name="npwp" required="" id="getNPWP">
                                     <div class="invalid-feedback">
                                         Mohon data diisi!
                                     </div>
@@ -310,12 +376,18 @@
         $('#editUser').on('show.bs.modal', function(event) {
             var button = $(event.relatedTarget)
             var nama = button.data('nama')
+            var kode = button.data('kode')
+            var gend = button.data('gend')
+            var npwp = button.data('npwp')
             var user = button.data('user')
             var alam = button.data('alam')
             var id = button.data('id')
             var modal = $(this)
             modal.find('#getId').val(id)
             modal.find('#getNama').val(nama)
+            modal.find('#getKode').val(kode)
+            modal.find('#getGend').val(gend)
+            modal.find('#getNPWP').val(npwp)
             modal.find('#getUser').val(user)
             modal.find('#getAddrs').val(alam)
         })
