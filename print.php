@@ -78,8 +78,16 @@ if (isset($_POST['printall'])) {
                                         <td> : <?php echo $pasien['berat'] . " kg"; ?></td>
                                     </tr>
                                     <tr>
+                                        <th scope="row">Nama KK</th>
+                                        <td> : <?php echo $pasien['validation_sheet']; ?></td>
+                                    </tr>
+                                    <tr>
                                         <th scope="row">Alamat</th>
                                         <td> : <?php echo $pasien['adress']; ?></td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Nomor Telepon</th>
+                                        <td> : <?php echo $pasien['phone_numb']; ?></td>
                                     </tr>
                                 </tbody>
                             </table>

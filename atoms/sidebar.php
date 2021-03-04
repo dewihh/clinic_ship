@@ -40,7 +40,7 @@ foreach ($pecahjudul as $w) {
             </li>
 
             <li <?php echo ($page1 == "Obat") ? "class=active" : ""; ?>><a class="nav-link" href="obat.php"><i class="fas fa-briefcase-medical"></i> <span>Farmasi</span></a></li>
-            <li <?php echo ($page == "" || @$page1 == "") ? "class=active" : ""; ?>><a class="nav-link" href="pasien.php"><i class="fas fa-dollar-sign"></i> <span>Keuangan</span></a></li>
+            <li <?php echo ($page1 == "uang") ? "class=active" : ""; ?>><a class="nav-link" href="keuangan.php"><i class="fas fa-dollar-sign"></i> <span>Keuangan</span></a></li>
 
 
     </aside>

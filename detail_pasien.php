@@ -82,8 +82,16 @@
                                                             <td> : <?php echo $pasien['berat'] . " kg"; ?></td>
                                                         </tr>
                                                         <tr>
+                                                            <th scope="row">Nama KK</th>
+                                                            <td> : <?php echo $pasien['validation_sheet']; ?></td>
+                                                        </tr>
+                                                        <tr>
                                                             <th scope="row">Alamat</th>
                                                             <td> : <?php echo $pasien['adress']; ?></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th scope="row">Nomor Telepon</th>
+                                                            <td> : <?php echo $pasien['phone_numb']; ?></td>
                                                         </tr>
                                                     </tbody>
                                                 </table>
@@ -103,6 +111,7 @@
                                                 <table class="table table-striped table-bordered" id="table-1">
                                                     <thead>
                                                         <tr>
+
                                                             <th>Tanggal Berobat</th>
                                                             <th>Penyakit</th>
                                                             <th>Diagnosa</th>
@@ -118,6 +127,7 @@
                                                             $idpenyakit = $row['id'];
                                                         ?>
                                                             <tr>
+
                                                                 <td><?php echo ucwords(tgl_indo($row['tgl'])); ?></td>
                                                                 <td><?php echo ucwords($row['penyakit']); ?></td>
                                                                 <td><?php
