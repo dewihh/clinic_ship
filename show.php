@@ -7,6 +7,23 @@ include "atoms/umur.php";
 $cek = mysqli_query($conn, "SELECT * FROM table_the_iot_projects ");
 $pasien = mysqli_fetch_array($cek);
 $idid = $pasien['id'];
+
+if (isset($_POST['submit'])) {
+    $id = $_POST['id'];
+    $stat = $_POST['status'];
+
+
+    $up2 = mysqli_query($conn, "UPDATE riwayat_penyakit SET status='$stat' WHERE id='$id'");
+    echo '<script>
+                setTimeout(function() {
+                    swal({
+                    title: "Data Diubah",
+                    text: "Data Pasien berhasil diubah!",
+                    icon: "success"
+                    });
+                    }, 500);
+                </script>';
+}
 ?>
 <table class="table table-striped table-bordered" id="table-1">
     <thead>
@@ -15,16 +32,16 @@ $idid = $pasien['id'];
             <th>Nama Pasien</th>
             <th>Tanggal Berobat</th>
             <th>Penyakit</th>
-            <th>Diagnosa</th>
             <th>Obat</th>
             <th>Total Biaya</th>
+            <th>Status</th>
             <th>Aksi</th>
         </tr>
     </thead>
     <tbody>
         <?php
 
-        $sql = mysqli_query($conn, "SELECT * FROM riwayat_penyakit WHERE id_pasien='$idid'");
+        $sql = mysqli_query($conn, "SELECT * FROM riwayat_penyakit WHERE id_pasien='$idid' ORDER BY id DESC");
         $i = 0;
         while ($row = mysqli_fetch_array($sql)) {
             $idpenyakit = $row['id'];
@@ -36,13 +53,10 @@ $idid = $pasien['id'];
                 <td><?php echo ucwords($pasien['name']); ?></td>
                 <td><?php echo ucwords(tgl_indo($row['tgl'])); ?></td>
                 <td><?php echo ucwords($row['penyakit']); ?></td>
-                <td><?php
-                    echo $row['diagnosa'] . " - ";
-                    ?>
-                </td>
+
                 <td>
                     <?php
-                    $obat2an = mysqli_query($conn, "SELECT * FROM riwayat_obat WHERE id_penyakit='$idpenyakit' AND id_pasien='$idid'");
+                    $obat2an = mysqli_query($conn, "SELECT * FROM riwayat_obat WHERE id_penyakit='$idpenyakit' AND id_pasien='$idid' ORDER BY id DESC");
                     $jumobat = mysqli_num_rows($obat2an);
                     if ($jumobat == 0) {
                         echo "Tidak ada obat yang diberikan";
@@ -73,12 +87,22 @@ $idid = $pasien['id'];
                     echo number_format(@$biayaperiksa + @$hargaobat, 0, ".", ".");
                     ?>
                 </td>
+                <td><?php
+                    if ($row['status'] == '1') {
+                        echo '<div class="badge badge-pill badge-success mb-1">Selesai';
+                    } else {
+                        echo '<div class="badge badge-pill badge-danger mb-1">Belum';
+                    } ?></td>
 
                 <td>
                     <form method="POST" action="print.php" target="_blank">
                         <input type="hidden" name="id" value="<?php echo $idnama; ?>">
                         <input type="hidden" name="idriwayat" value="<?php echo $idpenyakit ?>">
+
                         <div class="btn-group">
+                            <span data-target="#editStatus" data-toggle="modal" data-id="<?php echo $row['id']; ?>" data-stat="<?php echo $row['status']; ?>">
+                                <a class="btn btn-primary btn-action mr-1" title="Edit Data Pasien" data-toggle="tooltip"><i class="fas fa-pencil-alt"></i></a>
+                            </span>
                             <button type="submit" class="btn btn-info" name="detail" title="Detail" data-toggle="tooltip"><i class="fas fa-info"></i></button>
                             <button type="submit" class="btn btn-primary" name="printone" title="Print" data-toggle="tooltip"><i class="fas fa-print"></i></button>
                         </div>

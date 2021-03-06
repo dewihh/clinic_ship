@@ -16,24 +16,7 @@
     $pasien = mysqli_fetch_array($cek);
     $idid = $pasien['id'];
 
-    if (isset($_POST['submit'])) {
-        $id = $_POST['id'];
-        $nama = $_POST['nama'];
-        $berat = $_POST['berat'];
-        $tinggi = $_POST['tinggi'];
-        $tgl = $_POST['tgl'];
 
-        $up2 = mysqli_query($conn, "UPDATE table_the_iot_projects SET name='$nama', age='$tgl', berat='$berat', tinggi='$tinggi' WHERE id='$id'");
-        echo '<script>
-				setTimeout(function() {
-					swal({
-					title: "Data Diubah",
-					text: "Data Pasien berhasil diubah!",
-					icon: "success"
-					});
-					}, 500);
-				</script>';
-    }
     ?>
     <script type="text/javascript">
         var auto_refresh = setInterval(
@@ -82,7 +65,7 @@
                 </section>
             </div>
 
-            <div class="modal fade" tabindex="-1" role="dialog" id="editPasien">
+            <div class="modal fade" tabindex="-1" role="dialog" id="editStatus">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -93,50 +76,15 @@
                         </div>
                         <div class="modal-body">
                             <form action="" method="POST" class="needs-validation" novalidate="">
-                                <div class="form-group row">
-                                    <label class="col-sm-3 col-form-label">Nama Pasien</label>
-                                    <div class="col-sm-9">
-                                        <input type="hidden" class="form-control" name="id" required="" id="getId">
-                                        <input type="text" class="form-control" name="nama" required="" id="getNama">
-                                        <div class="invalid-feedback">
-                                            Mohon data diisi!
-                                        </div>
-                                    </div>
+                                <div class="form-group">
+                                    <label>Status Bayar</label>
+                                    <input type="hidden" class="form-control" name="id" required="" id="getId">
+                                    <select class="form-control selectric" name="status" id="getStatus">
+                                        <option value="1">Selesai</option>
+                                        <option value="2">Belum</option>
+                                    </select>
                                 </div>
-                                <div class="form-group row">
-                                    <label class="col-sm-3 col-form-label">Tanggal lahir</label>
-                                    <div class="form-group col-sm-9">
-                                        <input type="text" class="form-control datepicker" id="getTgl" name="tgl">
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label class="col-sm-3 col-form-label">Berat Badan</label>
-                                    <div class="input-group col-sm-9">
-                                        <input type="number" class="form-control" name="berat" required="" id="getBerat">
-                                        <div class="input-group-prepend">
-                                            <div class="input-group-text">
-                                                Kg
-                                            </div>
-                                        </div>
-                                        <div class="invalid-feedback">
-                                            Mohon data diisi!
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label class="col-sm-3 col-form-label">Tinggi Badan</label>
-                                    <div class="col-sm-9 input-group">
-                                        <input type="number" class="form-control" name="tinggi" required="" id="getTinggi">
-                                        <div class="input-group-prepend">
-                                            <div class="input-group-text">
-                                                cm
-                                            </div>
-                                        </div>
-                                        <div class="invalid-feedback">
-                                            Mohon data diisi!
-                                        </div>
-                                    </div>
-                                </div>
+
                         </div>
                         <div class="modal-footer bg-whitesmoke br">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -152,19 +100,15 @@
     <?php include "atoms/all_js.php"; ?>
 
     <script>
-        $('#editPasien').on('show.bs.modal', function(event) {
+        $('#editStatus').on('show.bs.modal', function(event) {
             var button = $(event.relatedTarget)
-            var nama = button.data('nama')
+            var stat = button.data('stat')
             var id = button.data('id')
-            var tgl = button.data('lahir')
-            var berat = button.data('berat')
-            var tinggi = button.data('tinggi')
+
             var modal = $(this)
             modal.find('#getId').val(id)
-            modal.find('#getNama').val(nama)
-            modal.find('#getTgl').val(tgl)
-            modal.find('#getBerat').val(berat)
-            modal.find('#getTinggi').val(tinggi)
+            modal.find('#getStatus').val(stat)
+
         })
     </script>
 </body>
