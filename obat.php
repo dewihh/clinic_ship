@@ -4,7 +4,7 @@
 <head>
     <?php
     $page1 = "Obat";
-    $page = "Data Obat";
+    $page = "Obat";
     session_start();
     include 'admin/connect.php';
     include "atoms/head.php";

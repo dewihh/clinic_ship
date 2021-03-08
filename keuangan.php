@@ -6,7 +6,7 @@
 
 
     $page1 = "uang";
-    $page = "Catatan Data Pasien";
+    $page = "uang";
     session_start();
     include 'admin/connect.php';
     include "atoms/head.php";

@@ -31,7 +31,7 @@ if (isset($_POST['submit'])) {
             <th class="text-center">#</th>
             <th>Nama Pasien</th>
             <th>Tanggal Berobat</th>
-            <th>Penyakit</th>
+            <th>Biaya Pengobatan</th>
             <th>Obat</th>
             <th>Total Biaya</th>
             <th>Status</th>
@@ -52,7 +52,7 @@ if (isset($_POST['submit'])) {
                 <td><?php echo $i; ?></td>
                 <td><?php echo ucwords($pasien['name']); ?></td>
                 <td><?php echo ucwords(tgl_indo($row['tgl'])); ?></td>
-                <td><?php echo ucwords($row['penyakit']); ?></td>
+                <td><?php echo number_format($row['biaya_pengobatan'], 0, ".", "."); ?></td>
 
                 <td>
                     <?php
@@ -68,14 +68,14 @@ if (isset($_POST['submit'])) {
                             $idobat = $showobat['id_obat'];
                             $obatlagi = mysqli_query($conn, "SELECT * FROM obat WHERE id='$idobat'");
                             $namaobat = mysqli_fetch_array($obatlagi);
-                            echo $str = ucwords($namaobat['nama_obat']);
+                            echo $str = ucwords($showobat['jumlah']);
                             $count = $count + 1;
 
                             if ($count < $jumobat) {
                                 echo ", ";
                             }
 
-                            @$hargaobat += $namaobat['harga'] * $jumjumjum;
+                            @$hargaobat += $jumjumjum;
                         }
                     }
                     ?>
@@ -83,7 +83,7 @@ if (isset($_POST['submit'])) {
                 <td>
                     <?php
 
-                    @$sum += $biayaperiksa + @$hargaobat;
+
                     echo number_format(@$biayaperiksa + @$hargaobat, 0, ".", ".");
                     ?>
                 </td>
@@ -112,3 +112,4 @@ if (isset($_POST['submit'])) {
         <?php } ?>
     </tbody>
 </table>
+<?php include "atoms/all_js.php"; ?>
