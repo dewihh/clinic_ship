@@ -283,6 +283,10 @@ button:active {
   margin-right: 178px;
 }
 
+.mrg-top-20 {
+  margin-top: 20px;
+}
+
 .mrg-57 {
   margin-right: 142px;
 }
@@ -325,4 +329,28 @@ button:active {
 .homepages__login .login__main img {
   padding-top: 30px;
   padding-bottom: 20px;
+}
+
+.form-flex {
+  display: flex;
+  justify-content: center;
+}
+
+.form-hidden {
+  display: none;
+}
+
+.form-icon {
+  padding: 15px;
+  background-color: white;
+  border-top-left-radius: 0.25rem;
+  border-bottom-left-radius: 0.25rem;
+  border: 1px solid #ced4da;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  font-size: 13px;
+}
+
+.form-bord {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
 }

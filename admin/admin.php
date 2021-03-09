@@ -63,20 +63,26 @@
             <div class="login__main">
                 <img src="../img/Hospital.svg">
                 <div class="login__input">
-                    <form method="POST" action="" class="needs-validation" novalidate="" autocomplete="off">
-                        <div class="form-group">
-                            <label for="username">Username</label>
-                            <input id="username" type="text" class="form-control" minlength="2" name="username" tabindex="1" required autofocus>
-                            <div class="invalid-feedback">
-                                Mohon isi username anda dengan benar!
+                    <form method="POST" action="" class="needs-validation mrg-top-20" novalidate="" autocomplete="off">
+                        <div class="form-group form-flex">
+                            <label for="username" class="form-hidden">Username</label>
+                            <i class="far fa-user fa-lg form-icon"></i>
+                            <div class="form-edit">
+                                <input id="username" type="text" placeholder="Username" class="form-control form-bord" minlength="2" name="username" tabindex="1" required autofocus>
+                                <div class="invalid-feedback">
+                                    Mohon isi username anda dengan benar!
+                                </div>
                             </div>
                         </div>
 
-                        <div class="form-group">
-                            <label for="password" class="controls-label">Password</label>
-                            <input id="password" type="password" class="form-control" name="password" tabindex="2" required>
-                            <div class="invalid-feedback">
-                                Mohon isi password anda!
+                        <div class="form-group form-flex">
+                            <label for="password" class="controls-label form-hidden">Password</label>
+                            <i class="fas fa-key fa-lg form-icon"></i>
+                            <div class="form-edit">
+                                <input id="password" type="password" placeholder="Password" class="form-control form-bord" name="password" tabindex="2" required>
+                                <div class="invalid-feedback">
+                                    Mohon isi password anda!
+                                </div>
                             </div>
                         </div>
 
