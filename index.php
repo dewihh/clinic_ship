@@ -114,11 +114,168 @@
 
                     </div>
 
+                    <div style="width: 500px;margin: 0px auto;">
+                        <canvas id="antrian"></canvas>
+                        <?php
+                        //Inisialisasi nilai variabel awal
+                        $no_antrian = "";
+                        $jumals = null;
+                        //Query SQL
+                        $sqla = "SELECT no_antrian,COUNT(*) as 'tlo' FROM antrian_a GROUP by no_antrian";
+                        $hasi = mysqli_query($conn, $sqla);
+
+                        while ($data = mysqli_fetch_array($hasi)) {
+                            //Mengambil nilai jurusan dari database
+                            $antrian = $data['no_antrian'];
+                            $no_antrian .= "'$antrian'" . ", ";
+                            //Mengambil nilai total dari database
+                            $jumls = $data['tlo'];
+                            $jumals .= "$jumls" . ", ";
+                        }
+                        ?>
+                    </div>
+
+                    <div style="width: 500px;margin: 0px auto;">
+                        <canvas id="jenis_kel"></canvas>
+                        <?php
+
+                        $jenis_kelamin = "";
+                        $jumlah = null;
+                        $sql = "select gender,COUNT(*) as 'total' from table_the_iot_projects GROUP by gender";
+                        $hasil = mysqli_query($conn, $sql);
+
+                        while ($data = mysqli_fetch_array($hasil)) {
+                            if ($data['gender'] == "Male") {
+                                $gender = "Laki-laki";
+                            } else {
+                                $gender = "Perempuan";
+                            }
+                            $jenis_kelamin .= "'$gender'" . ", ";
+
+                            $jum = $data['total'];
+                            $jumlah .= "$jum" . ", ";
+                        }
+                        ?>
+                    </div>
+
+                    <div style="width: 500px;margin: 0px auto;">
+                        <canvas id="penyakit"></canvas>
+                        <?php
+                        //Inisialisasi nilai variabel awal
+                        $penyakit = "";
+                        $jumal = null;
+                        //Query SQL
+                        $sqls = "SELECT penyakit,COUNT(*) as 'tl' FROM riwayat_penyakit GROUP by penyakit ORDER by count(*) desc LIMIT 5";
+                        $hasils = mysqli_query($conn, $sqls);
+
+                        while ($data = mysqli_fetch_array($hasils)) {
+                            //Mengambil nilai jurusan dari database
+                            $jur = $data['penyakit'];
+                            $penyakit .= "'$jur'" . ", ";
+                            //Mengambil nilai total dari database
+                            $juml = $data['tl'];
+                            $jumal .= "$juml" . ", ";
+                        }
+                        ?>
+                    </div>
+
                 </section>
             </div>
 
         </div>
     </div>
+
+    <script>
+        var ctx = document.getElementById("antrian").getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: [<?php $jumlah_bln = mysqli_query($conn, "SELECT  date_format(tgl,'%b') as bulan from antrian_a");
+                            while ($row = mysqli_fetch_array($jumlah_bln)) {
+
+                                echo "'" . $row["bulan"] . "',";
+                            } ?>],
+                datasets: [{
+                    label: 'Apa ini',
+                    data: [<?php echo $jumals; ?>]
+
+                        ,
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(255,99,132,1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                }
+
+            }
+
+
+        });
+    </script>
+
+    <script>
+        var ctx = document.getElementById('jenis_kel').getContext('2d');
+        var chart = new Chart(ctx, {
+            // The type of chart we want to create
+            type: 'pie',
+            // The data for our dataset
+            data: {
+                labels: [<?php echo $jenis_kelamin; ?>],
+                datasets: [{
+                    label: 'Data Pasien berdasarkan jenis kelamin',
+                    backgroundColor: ['rgb(255, 99, 132)', 'rgba(56, 86, 255, 0.87)'],
+                    borderColor: ['rgb(255, 99, 132)'],
+                    data: [<?php echo $jumlah; ?>]
+                }]
+            },
+            // Configuration options go here
+
+        });
+    </script>
+
+    <script>
+        var ctx = document.getElementById("penyakit").getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: [<?php echo $penyakit; ?>],
+                datasets: [{
+                    label: 'Data penyakit Populer ',
+                    backgroundColor: ['rgb(255, 99, 132)', 'rgba(56, 86, 255, 0.87)', 'rgb(60, 179, 113)', 'rgb(175, 238, 239)'],
+                    borderColor: ['rgb(255, 99, 132)'],
+                    data: [<?php echo $jumal; ?>]
+                }]
+            },
+
+            // Configuration options go here
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                }
+            }
+        });
+    </script>
 
     <?php include "atoms/all_js.php"; ?>
 </body>

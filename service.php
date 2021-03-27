@@ -20,7 +20,26 @@ file_put_contents('UIDContainer.php', $Write);
     <link href="css/custom.css" rel="stylesheet">
     <script src="js/bootstrap.min.js"></script>
     <script src="jquery.min.js"></script>
-    <title>Home : NodeMCU V3 ESP8266 / ESP12E with MYSQL Database</title>
+    <title>Website Rekam Medis</title>
+
+    <?php
+    include 'admin/connect.php';
+    if (isset($_POST['submit2'])) {
+        $nomor = $_POST['no_antrian'];
+        $tgl = date('Y-m-d');
+
+        $add = mysqli_query($conn, "INSERT INTO antrian_a (no_antrian, tgl) VALUES ('$nomor', '$tgl')");
+        echo '<script>
+            setTimeout(function() {
+                swal({
+                    title: "Berhasil!",
+                    text: "Antrian telah ditambahkan!",
+                    icon: "success"
+                    });
+                }, 500);
+        </script>';
+    }
+    ?>
 </head>
 
 <body>
@@ -50,55 +69,62 @@ file_put_contents('UIDContainer.php', $Write);
         <div class="homepages__main">
             <h1>Puskesmas Teknologi Rekayasa Internet</h1>
             <div class="container">
-                <div class="card">
-                    <div class="card__satu">
-                        <a href="service.php">
-                            <img src="./img/poli umum.svg">
-                            <p>POLI UMUM</p>
-                        </a>
-                        <div class="bullet margin-top-3">
-                            <a href="service.php">
-                                <span>A</span>
-                            </a>
+                <div class="">
+                    <form action="" method="POST" class="needs-validation" novalidate="">
+                        <div class="grid-wrapper grid-col-2">
+                            <div class="selection-wrapper">
+                                <label for="selected-item-1" class="selected-label">
+                                    <input type="radio" name="no_antrian" id="selected-item-1" value="1">
+                                    <span class="icon"></span>
+                                    <div class="selected-content">
+                                        <img src="./img/poli umum.svg" alt="">
+                                        <h4>POLI UMUM</h4>
+                                        <h5>Lorem ipsum dolor sit amet, consectetur.</h5>
+                                    </div>
+                                </label>
+                            </div>
+                            <div class="selection-wrapper">
+                                <label for="selected-item-2" class="selected-label">
+                                    <input type="radio" checked name="no_antrian" id="selected-item-2" value="2">
+                                    <span class="icon"></span>
+                                    <div class="selected-content">
+                                        <img src="./img/poli gigi.svg" alt="">
+                                        <h4>POLI GIGI</h4>
+                                        <h5>Lorem ipsum dolor sit amet, consectetur.</h5>
+                                    </div>
+                                </label>
+                            </div>
+                            <div class="selection-wrapper">
+                                <label for="selected-item-3" class="selected-label">
+                                    <input type="radio" checked name="no_antrian" id="selected-item-3" value="3">
+                                    <span class="icon"></span>
+                                    <div class="selected-content">
+                                        <img src="./img/poli kia.svg" alt="">
+                                        <h4>POLI KIA</h4>
+                                        <h5>Lorem ipsum dolor sit amet, consectetur.</h5>
+                                    </div>
+                                </label>
+                            </div>
+                            <div class="selection-wrapper">
+                                <label for="selected-item-4" class="selected-label">
+                                    <input type="radio" checked name="no_antrian" id="selected-item-4" value="4">
+                                    <span class="icon"></span>
+                                    <div class="selected-content">
+                                        <img src="./img/poli gizi.svg" alt="">
+                                        <h4>POLI GIZI</h4>
+                                        <h5>Lorem ipsum dolor sit amet, consectetur.</h5>
+                                    </div>
+                                </label>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary" name="submit2">Tambah</button>
                         </div>
-                    </div>
-                    <div class="card__satu">
-                        <a href="service.php">
-                            <img src="./img/poli gigi.svg">
-                            <p>POLI GIGI</p>
-                        </a>
-                        <div class="bullet margin-top-3">
-                            <a href="service.php">
-                                <span>B</span>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="card__satu">
-                        <a href="service.php">
-                            <img src="./img/poli kia.svg">
-                            <p>POLI KIA</p>
-                        </a>
-                        <div class="bullet margin-top">
-                            <a href="service.php">
-                                <span>C</span>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="card__satu">
-                        <a href="service.php">
-                            <img src="./img/poli gizi.svg">
-                            <p>POLI GIZI</p>
-                        </a>
-                        <div class="bullet margin-top">
-                            <a href="service.php">
-                                <span>D</span>
-                            </a>
-                        </div>
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
+    <script src="modules/sweetalert/sweetalert.min.js"></script>
 </body>
 
 </html>

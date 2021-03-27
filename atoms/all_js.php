@@ -30,3 +30,7 @@
 <!-- Template JS File -->
 <script src="js/scripts.js"></script>
 <script src="js/custom.js"></script>
+
+
+
+<script src="modules/chartjs/Chart.js"></script>

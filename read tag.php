@@ -28,7 +28,7 @@ file_put_contents('UIDContainer.php', $Write);
 	</script>
 
 
-	<title>Read Tag : NodeMCU V3 ESP8266 / ESP12E with MYSQL Database</title>
+	<title>Read Tag : Website Rekam Medis</title>
 </head>
 
 <body>

@@ -26,7 +26,6 @@ foreach ($pecahjudul as $w) {
                     <li <?php echo (@$page1 == "Data Pegawai") ? "class=active" : ""; ?>><a class="nav-link" href="pegawai.php">Data Pegawai</a></li>
                     <li <?php echo (@$page1 == "data") ? "class=active" : ""; ?>><a class="nav-link" href="paramedik.php">Data Paramedis</a></li>
                     <li <?php echo (@$page1 == "poli") ? "class=active" : ""; ?>><a class="nav-link" href="poli.php">Data Poli</a></li>
-                    <li <?php echo (@$page1 == "dokter") ? "class=active" : ""; ?>><a class="nav-link" href="dokter.php">Data Dokter</a></li>
                     <li <?php echo (@$page1 == "jadwal") ? "class=active" : ""; ?>><a class="nav-link" href="jadwal.php">Jadwal Dokter</a></li>
                 </ul>
             </li>
@@ -42,6 +41,7 @@ foreach ($pecahjudul as $w) {
             <li <?php echo ($page == "Obat") ? "class=active" : ""; ?>><a class="nav-link" href="obat.php"><i class="fas fa-briefcase-medical"></i> <span>Farmasi</span></a></li>
             <li <?php echo ($page == "uang") ? "class=active" : ""; ?>><a class="nav-link" href="keuangan.php"><i class="fas fa-dollar-sign"></i> <span>Keuangan</span></a></li>
 
+            <li <?php echo ($page == "Antrian") ? "class=active" : ""; ?>><a class="nav-link" href="antrian.php"><i class="fas fa-fire"></i><span>Antrian</span></a></li>
 
     </aside>
 </div>

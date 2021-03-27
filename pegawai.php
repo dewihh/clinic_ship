@@ -16,12 +16,14 @@
         $gend = $_POST['kelamin'];
         $npwp = $_POST['npwp'];
         $user = $_POST['username'];
+        $mail  = $_POST['email'];
         $alam = $_POST['alamat'];
+        $job = $_POST['pekerjaan'];
         $old_pass = $_POST['old_password'];
         $new_pass = $_POST['new_password'];
 
         if ($old_pass == "" && $new_pass == "") {
-            $up1 = mysqli_query($conn, "UPDATE pegawai SET id_pegawai='$kode', nama_pegawai='$nama', kelamin='$gend', npwp='$npwp', username='$user', alamat='$alam' WHERE id='$id'");
+            $up1 = mysqli_query($conn, "UPDATE pegawai SET id_pegawai='$kode', nama_pegawai='$nama', kelamin='$gend', npwp='$npwp', username='$user', email='$mail', pekerjaan='$job',alamat='$alam' WHERE id='$id'");
             echo '<script>
 			setTimeout(function() {
 				swal({
@@ -32,7 +34,7 @@
 					}, 500);
 					</script>';
         } elseif ($old_pass != "" && $new_pass != "") {
-            $cekpass = mysqli_query($conn, "SELECT * FROM pegawai WHERE id='$id' AND password='$old_pass'");
+            $cekpass = mysqli_query($conn, "SELECT * FROM pegawai WHERE id='$id' AND password='" . md5($old_pass) . "'");
             $cekada = mysqli_num_rows($cekpass);
             if ($cekada == 0) {
                 echo '<script>
@@ -45,7 +47,7 @@
 								}, 500);
 								</script>';
             } else {
-                $up2 = mysqli_query($conn, "UPDATE pegawai SET id_pegawai='$kode', nama_pegawai='$nama', kelamin='$gend', npwp='$npwp', username='$user', password='$new_pass', alamat='$alam' WHERE id='$id'");
+                $up2 = mysqli_query($conn, "UPDATE pegawai SET id_pegawai='$kode', nama_pegawai='$nama', kelamin='$gend', npwp='$npwp', username='$user', email='$mail', password='" . md5($new_pass) . "', pekerjaan='$job',alamat='$alam' WHERE id='$id'");
                 echo '<script>
 				setTimeout(function() {
 					swal({
@@ -82,7 +84,7 @@
 					}, 500);
 			</script>';
         } else {
-            $add = mysqli_query($conn, "INSERT INTO pegawai (username, password, id_pegawai, nama_pegawai, kelamin, npwp, alamat, pekerjaan) VALUES ('$user', '$pass', '$kode', '$nama', '$gend', $npwp, '$alam', '$job')");
+            $add = mysqli_query($conn, "INSERT INTO pegawai (username, email, password, id_pegawai, nama_pegawai, kelamin, npwp, alamat, pekerjaan) VALUES ('$user', $mail, '" . md5($pass) . "', '$kode', '$nama', '$gend', $npwp, '$alam', '$job')");
             echo '<script>
 				setTimeout(function() {
 					swal({
@@ -162,7 +164,7 @@
                                                             <td><?php echo ucwords($row['npwp']); ?></td>
                                                             <td><?php
                                                                 if ($row['pekerjaan'] == '1') {
-                                                                    echo '<div class="badge badge-pill badge-primary mb-1">Dokter Umum';
+                                                                    echo '<div class="badge badge-pill badge-danger mb-1">Dokter Umum';
                                                                 } elseif ($row['pekerjaan'] == '2') {
                                                                     echo '<div class="badge badge-pill badge-success mb-1">Apoteker';
                                                                 } elseif ($row['pekerjaan'] == '3') {
@@ -180,7 +182,7 @@
                                         </div>
                                         </td>
                                         <td>
-                                            <span data-target="#editUser" data-toggle="modal" data-id="<?php echo $row['id']; ?>" data-kode="<?php echo $row['id_pegawai']; ?>" data-nama="<?php echo $row['nama_pegawai']; ?>" data-gend="<?php echo $row['kelamin']; ?>" data-npwp="<?php echo $row['npwp'] ?>" data-user="<?php echo $row['username']; ?>" data-alam="<?php echo $row['alamat']; ?>">
+                                            <span data-target="#editUser" data-toggle="modal" data-id="<?php echo $row['id']; ?>" data-kode="<?php echo $row['id_pegawai']; ?>" data-nama="<?php echo $row['nama_pegawai']; ?>" data-gend="<?php echo $row['kelamin']; ?>" data-npwp="<?php echo $row['npwp'] ?>" data-user="<?php echo $row['username']; ?>" data-mail="<?php echo $row['email']; ?>" data-job="<?php echo $row['pekerjaan']; ?>" data-alam="<?php echo $row['alamat']; ?>">
                                                 <a class="btn btn-primary btn-action mr-1" title="Edit" data-toggle="tooltip"><i class="fas fa-pencil-alt"></i></a>
                                             </span>
                                             <a class="btn btn-danger btn-action" data-toggle="tooltip" title="Hapus" data-confirm="Hapus Data|Apakah anda ingin menghapus data ini?" data-confirm-yes="window.location.href = 'admin/delete.php?type=pegawai&id=<?php echo $row['id']; ?>'" ;><i class="fas fa-trash"></i></a>
@@ -247,6 +249,15 @@
                                 <label class="col-sm-3 col-form-label">Username</label>
                                 <div class="col-sm-9">
                                     <input type="text" class="form-control" name="username" required="">
+                                    <div class="invalid-feedback">
+                                        Mohon data diisi!
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-3 col-form-label">Email</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" name="email" required="">
                                     <div class="invalid-feedback">
                                         Mohon data diisi!
                                     </div>
@@ -340,6 +351,27 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="form-group row">
+                                <label class="col-sm-3 col-form-label">Email</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" name="email" required="" id="getEmail">
+                                    <div class="invalid-feedback">
+                                        Mohon data diisi!
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Pekerjaan</label>
+                                <select class="form-control selectric" name="pekerjaan" id='getJob'>
+                                    <option value="1">Dokter Umum</option>
+                                    <option value="2">Apoteker</option>
+                                    <option value="3">Dokter Gigi</option>
+                                    <option value="4">Dokter Anak</option>
+                                    <option value="5">Dokter KIA</option>
+                                    <option value="6">Staff Administrasi</option>
+                                    <option value="7">Kasir</option>
+                                </select>
+                            </div>
                             <div class="form-group">
                                 <label>Alamat</label>
                                 <textarea class="form-control" required="" name="alamat" id="getAddrs"></textarea>
@@ -380,6 +412,8 @@
             var gend = button.data('gend')
             var npwp = button.data('npwp')
             var user = button.data('user')
+            var mail = button.data('mail')
+            var job = button.data('job')
             var alam = button.data('alam')
             var id = button.data('id')
             var modal = $(this)
@@ -389,6 +423,8 @@
             modal.find('#getGend').val(gend)
             modal.find('#getNPWP').val(npwp)
             modal.find('#getUser').val(user)
+            modal.find('#getEmail').val(mail)
+            modal.find('#getJob').val(job)
             modal.find('#getAddrs').val(alam)
         })
     </script>

@@ -8,22 +8,7 @@ $cek = mysqli_query($conn, "SELECT * FROM table_the_iot_projects ");
 $pasien = mysqli_fetch_array($cek);
 $idid = $pasien['id'];
 
-if (isset($_POST['submit'])) {
-    $id = $_POST['id'];
-    $stat = $_POST['status'];
 
-
-    $up2 = mysqli_query($conn, "UPDATE riwayat_penyakit SET status='$stat' WHERE id='$id'");
-    echo '<script>
-                setTimeout(function() {
-                    swal({
-                    title: "Data Diubah",
-                    text: "Data Pasien berhasil diubah!",
-                    icon: "success"
-                    });
-                    }, 500);
-                </script>';
-}
 ?>
 <table class="table table-striped table-bordered" id="table-1">
     <thead>

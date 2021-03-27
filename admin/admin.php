@@ -29,7 +29,7 @@
             @$user = mysqli_real_escape_string($conn, $_POST['username']);
             @$pass = mysqli_real_escape_string($conn, $_POST['password']);
 
-            $login = mysqli_query($conn, "SELECT * FROM pegawai WHERE username='$user' AND password='$pass'");
+            $login = mysqli_query($conn, "SELECT * FROM pegawai WHERE (username='$user' or email='$user') AND password='" . md5($pass) . "'");
             $cek = mysqli_num_rows($login);
             $userid = mysqli_fetch_array($login);
 
@@ -67,7 +67,7 @@
                         <div class="form-group form-flex">
                             <label for="username" class="form-hidden">Username</label>
                             <i class="far fa-user fa-lg form-icon"></i>
-                            <div class="form-edit">
+                            <div class="">
                                 <input id="username" type="text" placeholder="Username" class="form-control form-bord" minlength="2" name="username" tabindex="1" required autofocus>
                                 <div class="invalid-feedback">
                                     Mohon isi username anda dengan benar!
@@ -78,17 +78,21 @@
                         <div class="form-group form-flex">
                             <label for="password" class="controls-label form-hidden">Password</label>
                             <i class="fas fa-key fa-lg form-icon"></i>
-                            <div class="form-edit">
+                            <div class="">
                                 <input id="password" type="password" placeholder="Password" class="form-control form-bord" name="password" tabindex="2" required>
                                 <div class="invalid-feedback">
                                     Mohon isi password anda!
                                 </div>
                             </div>
                         </div>
-
+                        <div class="div-syle">
+                            <a href="forget.php" class="a-style">
+                                <p class="text-center a-style mrg-btm-6">Forgot your password</p>
+                            </a>
+                        </div>
                         <div class="form-group">
 
-                            <button type="submit" name="submit" tabindex="4">
+                            <button class="btn-widths" type="submit" name="submit" tabindex="4">
                                 Login
                             </button>
                         </div>

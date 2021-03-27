@@ -19,5 +19,5 @@ if (!empty($_POST)) {
 	$q = $pdo->prepare($sql);
 	$q->execute(array($name, $id, $gender, $usia, $nama_kk, $alamat, $no_telp));
 	Database::disconnect();
-	header("Location: user data.php");
+	header("Location: read tag.php");
 }

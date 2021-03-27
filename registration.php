@@ -32,7 +32,7 @@ file_put_contents('UIDContainer.php', $Write);
 			}, 500);
 		});
 	</script>
-	<title>Registration : NodeMCU V3 ESP8266 / ESP12E with MYSQL Database</title>
+	<title>Registration : Website Rekam Medis</title>
 </head>
 
 <body>

@@ -19,7 +19,7 @@ file_put_contents('UIDContainer.php', $Write);
 	<link href="https://fonts.googleapis.com/css2?family=Lexend+Zetta&display=swap" rel="stylesheet">
 	<link href="css/custom.css" rel="stylesheet">
 	<script src="js/bootstrap.min.js"></script>
-	<title>Home : NodeMCU V3 ESP8266 / ESP12E with MYSQL Database</title>
+	<title>Website Rekam Medis</title>
 </head>
 
 <body>
