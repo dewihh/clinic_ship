@@ -16,7 +16,7 @@
         $gend = $_POST['kelamin'];
         $npwp = $_POST['npwp'];
         $user = $_POST['username'];
-        $mail  = $_POST['email'];
+        $mail  = $_POST['mail'];
         $alam = $_POST['alamat'];
         $job = $_POST['pekerjaan'];
         $old_pass = $_POST['old_password'];
@@ -67,6 +67,7 @@
         $gend = $_POST['kelamin'];
         $npwp = $_POST['npwp'];
         $user = $_POST['username'];
+        $mail  = $_POST['email'];
         $alam = $_POST['alamat'];
         $pass = $_POST['password'];
         $job = $_POST['pekerjaan'];
@@ -84,7 +85,7 @@
 					}, 500);
 			</script>';
         } else {
-            $add = mysqli_query($conn, "INSERT INTO pegawai (username, email, password, id_pegawai, nama_pegawai, kelamin, npwp, alamat, pekerjaan) VALUES ('$user', $mail, '" . md5($pass) . "', '$kode', '$nama', '$gend', $npwp, '$alam', '$job')");
+            $add = mysqli_query($conn, "INSERT INTO pegawai (username, email, password, id_pegawai, nama_pegawai, kelamin, npwp, alamat, pekerjaan) VALUES ('$user', '$mail', '" . md5($pass) . "', '$kode', '$nama', '$gend', $npwp, '$alam', '$job')");
             echo '<script>
 				setTimeout(function() {
 					swal({
@@ -212,6 +213,30 @@
                     <div class="modal-body">
                         <form action="" method="POST" class="needs-validation" novalidate="">
                             <div class="form-group row">
+                                <label class="col-sm-3 col-form-label">Username</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" name="username" required="">
+                                    <div class="invalid-feedback">
+                                        Mohon data diisi!
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-3 col-form-label">Email</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" name="email" required="">
+                                    <div class="invalid-feedback">
+                                        Mohon data diisi!
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-3 col-form-label">Password</label>
+                                <div class="col-sm-9">
+                                    <input type="password" name="password" class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-group row">
                                 <label class="col-sm-3 col-form-label">ID Pegawai</label>
                                 <div class="col-sm-9">
                                     <input type="text" class="form-control" name="id_pegawai" required="">
@@ -245,23 +270,9 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="form-group row">
-                                <label class="col-sm-3 col-form-label">Username</label>
-                                <div class="col-sm-9">
-                                    <input type="text" class="form-control" name="username" required="">
-                                    <div class="invalid-feedback">
-                                        Mohon data diisi!
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label class="col-sm-3 col-form-label">Email</label>
-                                <div class="col-sm-9">
-                                    <input type="text" class="form-control" name="email" required="">
-                                    <div class="invalid-feedback">
-                                        Mohon data diisi!
-                                    </div>
-                                </div>
+                            <div class="form-group">
+                                <label>Alamat</label>
+                                <textarea class="form-control" required="" name="alamat"></textarea>
                             </div>
                             <div class="form-group">
                                 <label>Pekerjaan</label>
@@ -275,16 +286,7 @@
                                     <option value="7">Kasir</option>
                                 </select>
                             </div>
-                            <div class="form-group">
-                                <label>Alamat</label>
-                                <textarea class="form-control" required="" name="alamat"></textarea>
-                            </div>
-                            <div class="form-group row">
-                                <label class="col-sm-3 col-form-label">Password</label>
-                                <div class="col-sm-9">
-                                    <input type="password" name="password" class="form-control">
-                                </div>
-                            </div>
+
                     </div>
                     <div class="modal-footer bg-whitesmoke br">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

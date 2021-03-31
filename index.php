@@ -134,51 +134,51 @@
                         }
                         ?>
                     </div>
+                    <div class="flex">
+                        <div style="width: 500px;margin: 0px auto;">
+                            <canvas id="jenis_kel"></canvas>
+                            <?php
 
-                    <div style="width: 500px;margin: 0px auto;">
-                        <canvas id="jenis_kel"></canvas>
-                        <?php
+                            $jenis_kelamin = "";
+                            $jumlah = null;
+                            $sql = "select gender,COUNT(*) as 'total' from table_the_iot_projects GROUP by gender";
+                            $hasil = mysqli_query($conn, $sql);
 
-                        $jenis_kelamin = "";
-                        $jumlah = null;
-                        $sql = "select gender,COUNT(*) as 'total' from table_the_iot_projects GROUP by gender";
-                        $hasil = mysqli_query($conn, $sql);
+                            while ($data = mysqli_fetch_array($hasil)) {
+                                if ($data['gender'] == "Male") {
+                                    $gender = "Laki-laki";
+                                } else {
+                                    $gender = "Perempuan";
+                                }
+                                $jenis_kelamin .= "'$gender'" . ", ";
 
-                        while ($data = mysqli_fetch_array($hasil)) {
-                            if ($data['gender'] == "Male") {
-                                $gender = "Laki-laki";
-                            } else {
-                                $gender = "Perempuan";
+                                $jum = $data['total'];
+                                $jumlah .= "$jum" . ", ";
                             }
-                            $jenis_kelamin .= "'$gender'" . ", ";
+                            ?>
+                        </div>
 
-                            $jum = $data['total'];
-                            $jumlah .= "$jum" . ", ";
-                        }
-                        ?>
+                        <div style="width: 500px;margin: 0px auto;">
+                            <canvas id="penyakit"></canvas>
+                            <?php
+                            //Inisialisasi nilai variabel awal
+                            $penyakit = "";
+                            $jumal = null;
+                            //Query SQL
+                            $sqls = "SELECT penyakit,COUNT(*) as 'tl' FROM riwayat_penyakit GROUP by penyakit ORDER by count(*) desc LIMIT 5";
+                            $hasils = mysqli_query($conn, $sqls);
+
+                            while ($data = mysqli_fetch_array($hasils)) {
+                                //Mengambil nilai jurusan dari database
+                                $jur = $data['penyakit'];
+                                $penyakit .= "'$jur'" . ", ";
+                                //Mengambil nilai total dari database
+                                $juml = $data['tl'];
+                                $jumal .= "$juml" . ", ";
+                            }
+                            ?>
+                        </div>
                     </div>
-
-                    <div style="width: 500px;margin: 0px auto;">
-                        <canvas id="penyakit"></canvas>
-                        <?php
-                        //Inisialisasi nilai variabel awal
-                        $penyakit = "";
-                        $jumal = null;
-                        //Query SQL
-                        $sqls = "SELECT penyakit,COUNT(*) as 'tl' FROM riwayat_penyakit GROUP by penyakit ORDER by count(*) desc LIMIT 5";
-                        $hasils = mysqli_query($conn, $sqls);
-
-                        while ($data = mysqli_fetch_array($hasils)) {
-                            //Mengambil nilai jurusan dari database
-                            $jur = $data['penyakit'];
-                            $penyakit .= "'$jur'" . ", ";
-                            //Mengambil nilai total dari database
-                            $juml = $data['tl'];
-                            $jumal .= "$juml" . ", ";
-                        }
-                        ?>
-                    </div>
-
                 </section>
             </div>
 

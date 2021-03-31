@@ -66,7 +66,7 @@
 					}, 500);
 			</script>';
         } else {
-            $add = mysqli_query($conn, "INSERT INTO paramedik (kode_paramedik,nama_paramedik,kelamin,sipp,tgl_lahir,poli) VALUES ('$nama', '$user', '$gend', '$izin', '$tgl', '$poli')");
+            $add = mysqli_query($conn, "INSERT INTO paramedik (kode_paramedik,nama_paramedik,kelamin,sipp,tgl_lahir,poli) VALUES ('$nama', '$user', '$gend', '$sipp', '$tgl', '$poli')");
             echo '<script>
 				setTimeout(function() {
 					swal({
