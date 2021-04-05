@@ -19,10 +19,10 @@
 
     if (isset($_POST['submit'])) {
         $id = $_POST['id'];
-        $status = $_POST['status'];
+        $sta = $_POST['status'];
 
 
-        $up2 = mysqli_query($conn, "UPDATE riwayat_penyakit SET status='$status' WHERE id='$id'");
+        $up2 = mysqli_query($conn, "UPDATE riwayat_penyakit SET status='$sta' WHERE id='$id'");
         echo '<script>
                     setTimeout(function() {
                         swal({
@@ -88,7 +88,7 @@
                                                 <tbody>
                                                     <?php
 
-                                                    $sql = mysqli_query($conn, "SELECT * FROM riwayat_penyakit WHERE id_pasien='$idid' AND tgl='$tgl' ORDER BY id DESC");
+                                                    $sql = mysqli_query($conn, "SELECT * FROM riwayat_penyakit WHERE id_pasien='$idid'  ORDER BY id DESC");
                                                     $i = 0;
                                                     while ($row = mysqli_fetch_array($sql)) {
                                                         $idpenyakit = $row['id'];
@@ -147,7 +147,7 @@
                                                                     <input type="hidden" name="idriwayat" value="<?php echo $idpenyakit ?>">
 
                                                                     <div class="btn-group">
-                                                                        <span data-target="#editStatus" data-toggle="modal" data-id="<?php echo $row['id']; ?>" data-status="<?php echo $row['status']; ?>">
+                                                                        <span data-target="#editStatus" data-toggle="modal" data-id="<?php echo $row['id']; ?>" data-sta="<?php echo $row['status']; ?>">
                                                                             <a class="btn btn-primary btn-action mr-1" title="Edit Data Pasien" data-toggle="tooltip"><i class="fas fa-pencil-alt"></i></a>
                                                                         </span>
                                                                         <button type="submit" class="btn btn-info" name="detail" title="Detail" data-toggle="tooltip"><i class="fas fa-info"></i></button>
@@ -205,12 +205,12 @@
     <script>
         $('#editStatus').on('show.bs.modal', function(event) {
             var button = $(event.relatedTarget)
-            var stat = button.data('status')
+            var sta = button.data('sta')
             var id = button.data('id')
 
             var modal = $(this)
             modal.find('#getId').val(id)
-            modal.find('#getStatus').val(stat)
+            modal.find('#getStatus').val(sta)
 
         })
     </script>
