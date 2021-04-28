@@ -15,8 +15,8 @@
     $jumpasien = mysqli_num_rows($pasien);
     $rawat_inap = mysqli_query($conn, "SELECT * FROM riwayat_penyakit WHERE id_pasien IS NOT NULL");
     $jumrawatinap = mysqli_num_rows($rawat_inap);
-    $dokter = mysqli_query($conn, "SELECT * FROM pegawai WHERE pekerjaan='1'");
-    $jumlahdokter = mysqli_num_rows($dokter);
+    $obat = mysqli_query($conn, "SELECT * FROM obat");
+    $jumlahobat = mysqli_num_rows($obat);
     ?>
     <style>
         #link-no {
@@ -97,7 +97,7 @@
                                         <h4>Total Obat</h4>
                                     </div>
                                     <div class="card-body">
-                                        <?php echo $jumlahdokter; ?>
+                                        <?php echo $jumlahobat; ?>
                                     </div>
                                 </div>
                             </div>

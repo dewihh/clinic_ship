@@ -94,7 +94,7 @@ file_put_contents('UIDContainer.php', $Write);
                                     </div>
                                 </label>
                             </div>
-                            <div class="selection-wrapper">
+                            <div class="selection-wrapper weather">
                                 <label for="selected-item-3" class="selected-label">
                                     <input type="radio" checked name="no_antrian" id="selected-item-3" value="3">
                                     <span class="icon"></span>
@@ -117,7 +117,7 @@ file_put_contents('UIDContainer.php', $Write);
                                 </label>
                             </div>
 
-                            <button type="submit" class="btn btn-primary" name="submit2">Tambah</button>
+                            <button type="submit" class="btn btn-primary pdn-btms" name="submit2">Tambah</button>
                         </div>
                     </form>
                 </div>

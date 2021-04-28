@@ -6,7 +6,7 @@
 
 
     $page1 = "uang";
-    $page = "uang";
+    $page = "Pembayaran";
     session_start();
     include 'admin/connect.php';
     include "atoms/head.php";
@@ -14,7 +14,7 @@
     include "atoms/umur.php";
     $cek = mysqli_query($conn, "SELECT * FROM table_the_iot_projects ");
     $pasien = mysqli_fetch_array($cek);
-    $idid = $pasien['id'];
+
     $tgl    = date("Y-m-d");
 
     if (isset($_POST['submit'])) {
@@ -58,17 +58,15 @@
             <div class="main-content">
                 <section class="section">
                     <div class="section-header">
-                        <h1><?php echo $page1; ?></h1>
+                        <h1><?php echo $page; ?></h1>
                     </div>
                     <div class="section-body">
                         <div class="row">
                             <div class="col-12">
                                 <div class="card">
                                     <div class="card-header">
-                                        <h4>Pasien yang telah terdaftar</h4>
-                                        <div class="card-header-action">
-                                            <a href="rawat_jalan.php" class="btn btn-primary">Daftar pasien baru</a>
-                                        </div>
+                                        <h4>Pasien yang belum membayar</h4>
+
                                     </div>
                                     <div class="card-body">
                                         <div class="table-responsive">
@@ -88,7 +86,7 @@
                                                 <tbody>
                                                     <?php
 
-                                                    $sql = mysqli_query($conn, "SELECT * FROM riwayat_penyakit WHERE id_pasien='$idid'  ORDER BY id DESC");
+                                                    $sql = mysqli_query($conn, "SELECT q.*,t.name as wname FROM riwayat_penyakit q INNER JOIN table_the_iot_projects t ON t.id = q.id_pasien WHERE q.tgl='$tgl' ORDER BY q.id DESC");
                                                     $i = 0;
                                                     while ($row = mysqli_fetch_array($sql)) {
                                                         $idpenyakit = $row['id'];
@@ -97,19 +95,24 @@
                                                     ?>
                                                         <tr>
                                                             <td><?php echo $i; ?></td>
-                                                            <td><?php echo ucwords($pasien['name']); ?></td>
+                                                            <td><?php
+
+
+                                                                echo ucwords($row['wname']); ?></td>
+
                                                             <td><?php echo ucwords(tgl_indo($row['tgl'])); ?></td>
                                                             <td><?php echo number_format($row['biaya_pengobatan'], 0, ".", "."); ?></td>
 
                                                             <td>
                                                                 <?php
-                                                                $obat2an = mysqli_query($conn, "SELECT * FROM riwayat_obat WHERE id_penyakit='$idpenyakit' AND id_pasien='$idid' ORDER BY id DESC");
+                                                                $obat2an = mysqli_query($conn, "SELECT * FROM riwayat_obat WHERE id_penyakit='$idpenyakit'  ORDER BY id DESC");
                                                                 $jumobat = mysqli_num_rows($obat2an);
                                                                 if ($jumobat == 0) {
                                                                     echo "Tidak ada obat yang diberikan";
                                                                     @$hargaobat = 0;
                                                                 } else {
                                                                     $count = 0;
+                                                                    @$hargaobat = 0;
                                                                     while ($showobat = mysqli_fetch_array($obat2an)) {
                                                                         $jumjumjum = $showobat['jumlah'];
                                                                         $idobat = $showobat['id_obat'];
@@ -122,7 +125,7 @@
                                                                             echo ", ";
                                                                         }
 
-                                                                        @$hargaobat += $jumjumjum;
+                                                                        @$hargaobat += $namaobat['harga'] * $jumjumjum;
                                                                     }
                                                                 }
                                                                 ?>
@@ -150,8 +153,6 @@
                                                                         <span data-target="#editStatus" data-toggle="modal" data-id="<?php echo $row['id']; ?>" data-sta="<?php echo $row['status']; ?>">
                                                                             <a class="btn btn-primary btn-action mr-1" title="Edit Data Pasien" data-toggle="tooltip"><i class="fas fa-pencil-alt"></i></a>
                                                                         </span>
-                                                                        <button type="submit" class="btn btn-info" name="detail" title="Detail" data-toggle="tooltip"><i class="fas fa-info"></i></button>
-                                                                        <button type="submit" class="btn btn-primary" name="printone" title="Print" data-toggle="tooltip"><i class="fas fa-print"></i></button>
                                                                     </div>
                                                                 </form>
                                                             </td>

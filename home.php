@@ -55,14 +55,14 @@ file_put_contents('UIDContainer.php', $Write);
 				<div class="option">
 					<div class="option__satu">
 						<a href="registration.php">
-							<img src="./img/icon user.svg">
-							<p>Pendaftaran Pasien Baru</p>
+							<img class="gambar" src="./img/icon user.svg">
+							<p class="p-size"> Pendaftaran Pasien Baru</p>
 						</a>
 					</div>
 					<div class="option__satu">
 						<a href="read tag.php">
-							<img src="./img/icon user 2.svg">
-							<p>Pendaftaran Pasien Lama</p>
+							<img class="gambar" src="./img/icon user 2.svg">
+							<p class="p-size">Pendaftaran Pasien Lama</p>
 						</a>
 					</div>
 				</div>

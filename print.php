@@ -137,6 +137,7 @@ if (isset($_POST['printall'])) {
                                                     @$hargaobat = 0;
                                                 } else {
                                                     $count = 0;
+                                                    @$hargaobat = 0;
                                                     while ($showobat = mysqli_fetch_array($obat2an)) {
                                                         $jumjumjum = $showobat['jumlah'];
                                                         $idobat = $showobat['id_obat'];

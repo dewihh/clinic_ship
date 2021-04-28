@@ -39,7 +39,7 @@ foreach ($pecahjudul as $w) {
             </li>
 
             <li <?php echo ($page == "Obat") ? "class=active" : ""; ?>><a class="nav-link" href="obat.php"><i class="fas fa-briefcase-medical"></i> <span>Farmasi</span></a></li>
-            <li <?php echo ($page == "uang") ? "class=active" : ""; ?>><a class="nav-link" href="keuangan.php"><i class="fas fa-dollar-sign"></i> <span>Keuangan</span></a></li>
+            <li <?php echo ($page == "Pembayaran") ? "class=active" : ""; ?>><a class="nav-link" href="keuangan.php"><i class="fas fa-dollar-sign"></i> <span>Keuangan</span></a></li>
 
             <li <?php echo ($page == "Antrian") ? "class=active" : ""; ?>><a class="nav-link" href="antrian.php"><i class="fas fa-fire"></i><span>Antrian</span></a></li>
 

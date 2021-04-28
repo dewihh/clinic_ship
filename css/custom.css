@@ -34,7 +34,8 @@ body {
   font-family: "Sniglet", cursive;
   width: 82%;
   background-color: #3f859b;
-  margin-left: 120px;
+  margin-left: auto;
+  margin-right: auto;
   margin-top: 44px;
   height: 80px;
   display: flex;
@@ -43,7 +44,9 @@ body {
 
 .homepages__navbar .navbar__menu ul {
   display: flex;
+  flex-wrap: nowrap;
   font-size: 22px;
+  align-items: center;
   color: #eedfdf;
 }
 
@@ -88,7 +91,8 @@ body {
 .homepages__main .container .container__title {
   background-color: #cf7070;
   width: 82%;
-  margin-left: 120px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .homepages__main .container .option {
@@ -97,12 +101,17 @@ body {
   justify-content: space-evenly;
   background-color: #e09aab;
   width: 82%;
-  margin-left: 120px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .homepages__main .container .option .option__satu {
   margin-top: 25px;
   margin-bottom: 25px;
+}
+
+.homepages__main .container .option .option__satu:hover {
+  background-color: #f77e9c;
 }
 
 .homepages__main .container .option .option__satu a {
@@ -364,9 +373,10 @@ button:active {
 
 .grid-wrapper {
   display: grid;
-  grid-gap: 30px;
+  grid-gap: 25px;
   place-items: center;
   place-content: center;
+  margin-top: 20px;
 }
 .grid-col-auto {
   grid-template-columns: repeat(auto-fill, minmax(280px, 0.1fr));
@@ -572,6 +582,10 @@ button:active {
   height: 100vh;
 }
 
+.pdn-btms {
+  margin-bottom: 30px;
+}
+
 .mrg-tp {
   margin-top: 85px;
 }
@@ -635,4 +649,74 @@ button:active {
   display: flex;
   justify-content: center;
   margin-bottom: 20px;
+}
+
+.weather {
+  grid-row: 1;
+  grid-column: 4;
+}
+
+.temperature {
+  grid-row: 2;
+  grid-column: 3;
+}
+
+.wifi {
+  grid-row: 3;
+  grid-column: 1;
+}
+
+.alarm {
+  grid-row: 4;
+  grid-column: 1;
+}
+
+.light {
+  grid-row: 3/5;
+  grid-column: 2/4;
+}
+
+@media (max-width: 575.98px) {
+  .homepages__title h1 {
+    font-size: 32px !important;
+  }
+  .homepages__title p {
+    font-size: 16px !important;
+  }
+  .homepages__main h1 {
+    font-size: 16px !important;
+  }
+  .homepages__main h2 {
+    font-size: 16px !important;
+  }
+  .homepages__navbar .navbar__menu ul {
+    font-size: 15px !important;
+  }
+  .homepages__navbar .navbar__menu ul li {
+    margin-left: 0;
+  }
+  .input__main {
+    width: 80%;
+  }
+  .input__main #show_user_data form .table_dua tr td {
+    padding: 10px 0 10px 5px;
+  }
+  .gambar {
+    width: 45px;
+  }
+  .p-size {
+    font-size: 12px !important;
+  }
+  .weather {
+    grid-row: 1;
+    grid-column: 1;
+  }
+  .grid-col-2 {
+    grid-template-columns: repeat(1, auto);
+  }
+  .controls textarea,
+  .controls input,
+  .controls select {
+    width: 80vw;
+  }
 }

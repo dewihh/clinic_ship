@@ -17,7 +17,7 @@
 
     if (isset($_POST['jalan1'])) {
         if ($cekrow == 0) {
-            mysqli_query($conn, "INSERT INTO pasien (name, tinggi, berat) VALUES ('$nama', '0', '0')");
+            mysqli_query($conn, "INSERT INTO table_the_iot_projects (name, tinggi, berat) VALUES ('$nama', '0', '0')");
             echo '<script> location.reload(); </script>';
         } else {
             echo '<script>
