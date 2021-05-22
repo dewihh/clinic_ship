@@ -16,7 +16,7 @@ foreach ($pecahjudul as $w) {
             <a href="index.php"><?php echo $acronym; ?></a>
         </div>
         <ul class="sidebar-menu">
-            <li <?php echo ($page == "Dashboard") ? "class=active" : ""; ?>><a class="nav-link" href="index.php"><i class="fas fa-fire"></i><span>Dashboard</span></a></li>
+            <li <?php echo ($page == "Dashboard") ? "class=active" : ""; ?>><a class="nav-link" href="index.php"><i class="fas fa-h-square"></i><span>Dashboard</span></a></li>
             <li class="menu-header">Menu</li>
 
             <li class="dropdown <?php echo ($page1 == "datajabatan" || $page1 == "Data Pegawai" || $page1 == "data" || $page1 == "poli" || $page1 == "dokter" || $page1 == "jadwal") ? "active" : ""; ?>">
@@ -38,10 +38,10 @@ foreach ($pecahjudul as $w) {
                 </ul>
             </li>
 
-            <li <?php echo ($page == "Obat") ? "class=active" : ""; ?>><a class="nav-link" href="obat.php"><i class="fas fa-briefcase-medical"></i> <span>Farmasi</span></a></li>
+            <li <?php echo ($page == "Data Obat") ? "class=active" : ""; ?>><a class="nav-link" href="obat.php"><i class="fas fa-briefcase-medical"></i> <span>Farmasi</span></a></li>
             <li <?php echo ($page == "Pembayaran") ? "class=active" : ""; ?>><a class="nav-link" href="keuangan.php"><i class="fas fa-dollar-sign"></i> <span>Keuangan</span></a></li>
 
-            <li <?php echo ($page == "Antrian") ? "class=active" : ""; ?>><a class="nav-link" href="antrian.php"><i class="fas fa-fire"></i><span>Antrian</span></a></li>
+
 
     </aside>
 </div>

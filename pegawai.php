@@ -4,10 +4,11 @@
 <head>
     <?php
     $page1 = "Data Pegawai";
-    $page = "Catatan Data Pegawai";
+    $page = "Data Pegawai";
     session_start();
     include 'admin/connect.php';
     include "atoms/head.php";
+    include "atoms/umur.php";
 
     if (isset($_POST['submit'])) {
         $id = $_POST['iduser'];
@@ -15,15 +16,16 @@
         $nama = $_POST['nama'];
         $gend = $_POST['kelamin'];
         $npwp = $_POST['npwp'];
+        $tgl = $_POST['tgl_lahir'];
         $user = $_POST['username'];
-        $mail  = $_POST['mail'];
+        $mail  = $_POST['email'];
         $alam = $_POST['alamat'];
         $job = $_POST['pekerjaan'];
         $old_pass = $_POST['old_password'];
         $new_pass = $_POST['new_password'];
 
         if ($old_pass == "" && $new_pass == "") {
-            $up1 = mysqli_query($conn, "UPDATE pegawai SET id_pegawai='$kode', nama_pegawai='$nama', kelamin='$gend', npwp='$npwp', username='$user', email='$mail', pekerjaan='$job',alamat='$alam' WHERE id='$id'");
+            $up1 = mysqli_query($conn, "UPDATE pegawai SET id_pegawai='$kode', nama_pegawai='$nama', kelamin='$gend', npwp='$npwp', tgl_lahir='$tgl', username='$user', email='$mail', pekerjaan='$job',alamat='$alam' WHERE id='$id'");
             echo '<script>
 			setTimeout(function() {
 				swal({
@@ -47,7 +49,7 @@
 								}, 500);
 								</script>';
             } else {
-                $up2 = mysqli_query($conn, "UPDATE pegawai SET id_pegawai='$kode', nama_pegawai='$nama', kelamin='$gend', npwp='$npwp', username='$user', email='$mail', password='" . md5($new_pass) . "', pekerjaan='$job',alamat='$alam' WHERE id='$id'");
+                $up2 = mysqli_query($conn, "UPDATE pegawai SET id_pegawai='$kode', nama_pegawai='$nama', kelamin='$gend', npwp='$npwp', tgl_lahir='$tgl', username='$user', email='$mail', password='" . md5($new_pass) . "', pekerjaan='$job',alamat='$alam' WHERE id='$id'");
                 echo '<script>
 				setTimeout(function() {
 					swal({
@@ -66,6 +68,7 @@
         $nama = $_POST['nama'];
         $gend = $_POST['kelamin'];
         $npwp = $_POST['npwp'];
+        $tgl = $_POST['tgl_lahir'];
         $user = $_POST['username'];
         $mail  = $_POST['email'];
         $alam = $_POST['alamat'];
@@ -85,7 +88,7 @@
 					}, 500);
 			</script>';
         } else {
-            $add = mysqli_query($conn, "INSERT INTO pegawai (username, email, password, id_pegawai, nama_pegawai, kelamin, npwp, alamat, pekerjaan) VALUES ('$user', '$mail', '" . md5($pass) . "', '$kode', '$nama', '$gend', $npwp, '$alam', '$job')");
+            $add = mysqli_query($conn, "INSERT INTO pegawai (username, email, password, id_pegawai, nama_pegawai, kelamin, npwp, tgl_lahir, alamat, pekerjaan) VALUES ('$user', '$mail', '" . md5($pass) . "', '$kode', '$nama', '$gend', $npwp, '$tgl', '$alam', '$job')");
             echo '<script>
 				setTimeout(function() {
 					swal({
@@ -98,6 +101,11 @@
         }
     }
     ?>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker.css" rel="stylesheet" type="text/css" />
+    <script src="jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.js"></script>
 </head>
 
 <body>
@@ -114,7 +122,7 @@
             <div class="main-content">
                 <section class="section">
                     <div class="section-header">
-                        <h1>Data Pegawai</h1>
+                        <h1>Administrasi</h1>
                     </div>
 
                     <div class="section-body">
@@ -133,13 +141,14 @@
                                                 <thead>
                                                     <tr>
                                                         <th class="text-center">
-                                                            #
+                                                            No
                                                         </th>
                                                         <th>ID Pegawai</th>
                                                         <th>Nama Pegawai</th>
                                                         <th>Alamat</th>
                                                         <th>Jenis Kelamin</th>
                                                         <th>NPWP</th>
+                                                        <th>Umur</th>
                                                         <th>Pekerjaan</th>
                                                         <th>Action</th>
                                                     </tr>
@@ -163,15 +172,20 @@
                                                                     echo '<div class="badge badge-pill badge-success mb-1">Perempuan';
                                                                 } ?></td>
                                                             <td><?php echo ucwords($row['npwp']); ?></td>
+                                                            <td><?php if ($row['tgl_lahir'] == "") {
+                                                                    echo "-";
+                                                                } else {
+                                                                    umur($row['tgl_lahir']);
+                                                                } ?></td>
                                                             <td><?php
                                                                 if ($row['pekerjaan'] == '1') {
                                                                     echo '<div class="badge badge-pill badge-danger mb-1">Dokter Umum';
                                                                 } elseif ($row['pekerjaan'] == '2') {
-                                                                    echo '<div class="badge badge-pill badge-success mb-1">Apoteker';
+                                                                    echo '<div class="badge badge-pill mb-1 bg-badge">Apoteker';
                                                                 } elseif ($row['pekerjaan'] == '3') {
                                                                     echo '<div class="badge badge-pill badge-secondary mb-1">Dokter Gigi';
                                                                 } elseif ($row['pekerjaan'] == '4') {
-                                                                    echo '<div class="badge badge-pill badge-info mb-1">Dokter Anak';
+                                                                    echo '<div class="badge badge-pill badge-info mb-1 ">Dokter Gizi';
                                                                 } elseif ($row['pekerjaan'] == '5') {
                                                                     echo '<div class="badge badge-pill badge-light mb-1">Dokter KIA';
                                                                 } elseif ($row['pekerjaan'] == '6') {
@@ -183,7 +197,7 @@
                                         </div>
                                         </td>
                                         <td>
-                                            <span data-target="#editUser" data-toggle="modal" data-id="<?php echo $row['id']; ?>" data-kode="<?php echo $row['id_pegawai']; ?>" data-nama="<?php echo $row['nama_pegawai']; ?>" data-gend="<?php echo $row['kelamin']; ?>" data-npwp="<?php echo $row['npwp'] ?>" data-user="<?php echo $row['username']; ?>" data-mail="<?php echo $row['email']; ?>" data-job="<?php echo $row['pekerjaan']; ?>" data-alam="<?php echo $row['alamat']; ?>">
+                                            <span data-target="#editUser" data-toggle="modal" data-id="<?php echo $row['id']; ?>" data-kode="<?php echo $row['id_pegawai']; ?>" data-nama="<?php echo $row['nama_pegawai']; ?>" data-gend="<?php echo $row['kelamin']; ?>" data-npwp="<?php echo $row['npwp'] ?>" data-tgls="<?php echo $row['tgl_lahir'] ?>" data-user="<?php echo $row['username']; ?>" data-mail="<?php echo $row['email']; ?>" data-job="<?php echo $row['pekerjaan']; ?>" data-alam="<?php echo $row['alamat']; ?>">
                                                 <a class="btn btn-primary btn-action mr-1" title="Edit" data-toggle="tooltip"><i class="fas fa-pencil-alt"></i></a>
                                             </span>
                                             <a class="btn btn-danger btn-action" data-toggle="tooltip" title="Hapus" data-confirm="Hapus Data|Apakah anda ingin menghapus data ini?" data-confirm-yes="window.location.href = 'admin/delete.php?type=pegawai&id=<?php echo $row['id']; ?>'" ;><i class="fas fa-trash"></i></a>
@@ -270,6 +284,15 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="form-group row">
+                                <label class="col-sm-3 col-form-label">Tanggal Lahir</label>
+                                <div class="col-sm-9">
+                                    <input id="tgls" type="text" class="form-control" name="tgl_lahir" data-provide="datepicker" required="">
+                                    <div class="invalid-feedback">
+                                        Mohon data diisi!
+                                    </div>
+                                </div>
+                            </div>
                             <div class="form-group">
                                 <label>Alamat</label>
                                 <textarea class="form-control" required="" name="alamat"></textarea>
@@ -280,7 +303,7 @@
                                     <option value="1">Dokter Umum</option>
                                     <option value="2">Apoteker</option>
                                     <option value="3">Dokter Gigi</option>
-                                    <option value="4">Dokter Anak</option>
+                                    <option value="4">Dokter Gizi</option>
                                     <option value="5">Dokter KIA</option>
                                     <option value="6">Staff Administrasi</option>
                                     <option value="7">Kasir</option>
@@ -345,6 +368,15 @@
                                 </div>
                             </div>
                             <div class="form-group row">
+                                <label class="col-sm-3 col-form-label">Tanggal Lahir</label>
+                                <div class="col-sm-9">
+                                    <input id="tgls" type="text" class="form-control" name="tgl_lahir" required="" data-provide="datepicker" id="getTgls">
+                                    <div class="invalid-feedback">
+                                        Mohon data diisi!
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
                                 <label class="col-sm-3 col-form-label">Username</label>
                                 <div class="col-sm-9">
                                     <input type="text" class="form-control" name="username" required="" id="getUser">
@@ -368,7 +400,7 @@
                                     <option value="1">Dokter Umum</option>
                                     <option value="2">Apoteker</option>
                                     <option value="3">Dokter Gigi</option>
-                                    <option value="4">Dokter Anak</option>
+                                    <option value="4">Dokter Gizi</option>
                                     <option value="5">Dokter KIA</option>
                                     <option value="6">Staff Administrasi</option>
                                     <option value="7">Kasir</option>
@@ -406,6 +438,16 @@
     </div>
     <?php include "atoms/all_js.php"; ?>
 
+    <script type="text/javascript">
+        $(function() {
+            $('#tgls').datepicker({
+                format: 'yyyy-mm-dd',
+                autoclose: true,
+                todayHighlight: true
+            }).datepicker('update', new Date());
+        });
+    </script>
+
     <script>
         $('#editUser').on('show.bs.modal', function(event) {
             var button = $(event.relatedTarget)
@@ -413,6 +455,7 @@
             var kode = button.data('kode')
             var gend = button.data('gend')
             var npwp = button.data('npwp')
+            var tgls = button.data('tgls')
             var user = button.data('user')
             var mail = button.data('mail')
             var job = button.data('job')
@@ -424,6 +467,7 @@
             modal.find('#getKode').val(kode)
             modal.find('#getGend').val(gend)
             modal.find('#getNPWP').val(npwp)
+            modal.find('#getTgls').val(tgls)
             modal.find('#getUser').val(user)
             modal.find('#getEmail').val(mail)
             modal.find('#getJob').val(job)

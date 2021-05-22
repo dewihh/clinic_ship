@@ -4,7 +4,7 @@
 <head>
     <?php
     $page1 = "datajabatan";
-    $page = "Catatan Data Jabatan";
+    $page = "Data Jabatan";
     session_start();
     include 'admin/connect.php';
     include "atoms/head.php";
@@ -83,7 +83,7 @@
             <div class="main-content">
                 <section class="section">
                     <div class="section-header">
-                        <h1>Data Jabatan</h1>
+                        <h1>Administrasi</h1>
                     </div>
 
                     <div class="section-body">
@@ -102,7 +102,7 @@
                                                 <thead>
                                                     <tr>
                                                         <th class="text-center">
-                                                            #
+                                                            No
                                                         </th>
                                                         <th>Nama Jabatan</th>
                                                         <th>Action</th>

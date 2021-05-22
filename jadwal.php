@@ -110,7 +110,7 @@
                                                 <thead>
                                                     <tr>
                                                         <th class="text-center">
-                                                            #
+                                                            No
                                                         </th>
                                                         <th>Nama Dokter</th>
                                                         <th>Hari</th>
@@ -131,7 +131,7 @@
                                                             <td><?php echo $i; ?></td>
                                                             <td><?php echo ucwords($row['nama_dokter']); ?></td>
                                                             <td><?php echo ucwords($row['hari']); ?></td>
-                                                            <td><?php echo ucwords($row['mulai']); ?></td>?>
+                                                            <td><?php echo ucwords($row['mulai']); ?></td>
                                                             <td><?php echo ucwords($row['selesai']); ?></td>
                                                             <td><?php echo ucwords($row['poli']); ?></td>
 

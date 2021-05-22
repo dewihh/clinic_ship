@@ -5,7 +5,7 @@
     <?php
 
 
-    $page1 = "uang";
+    $page1 = "Transaksi";
     $page = "Pembayaran";
     session_start();
     include 'admin/connect.php';
@@ -58,14 +58,14 @@
             <div class="main-content">
                 <section class="section">
                     <div class="section-header">
-                        <h1><?php echo $page; ?></h1>
+                        <h1><?php echo $page1; ?></h1>
                     </div>
                     <div class="section-body">
                         <div class="row">
                             <div class="col-12">
                                 <div class="card">
                                     <div class="card-header">
-                                        <h4>Pasien yang belum membayar</h4>
+                                        <h4>Data Transaksi</h4>
 
                                     </div>
                                     <div class="card-body">
@@ -73,7 +73,7 @@
                                             <table class="table table-striped table-bordered" id="table-1">
                                                 <thead>
                                                     <tr>
-                                                        <th class="text-center">#</th>
+                                                        <th class="text-center">No</th>
                                                         <th>Nama Pasien</th>
                                                         <th>Tanggal Berobat</th>
                                                         <th>Biaya Pengobatan</th>

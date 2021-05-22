@@ -323,6 +323,7 @@ button:active {
 .mrg-btm-6 {
   margin-bottom: 5px;
 }
+
 /* STYLE HALAMAN Login */
 
 .homepages__login {
@@ -674,6 +675,52 @@ button:active {
 .light {
   grid-row: 3/5;
   grid-column: 2/4;
+}
+
+.cont__panggil {
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 40px;
+}
+
+.ant_panggil {
+  text-align: center;
+}
+
+.tamp-satu {
+  background-color: bisque;
+  padding: 10px 70px 10px 70px;
+  margin-bottom: 20px;
+}
+
+.tamp-dua {
+  background-color: bisque;
+  padding: 10px 70px 10px 70px;
+  margin-bottom: 20px;
+}
+
+.tamp-tiga {
+  background-color: bisque;
+  padding: 10px 70px 10px 70px;
+}
+
+.ant_video {
+  background-color: bisque;
+  padding: 50px 70px 50px 70px;
+  text-align: center;
+}
+
+.cont_antr {
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 40px;
+  margin-bottom: 50px;
+  text-align: center;
+}
+
+.card_antr {
+  background-color: bisque;
+  padding: 20px 70px 20px 70px;
 }
 
 @media (max-width: 575.98px) {

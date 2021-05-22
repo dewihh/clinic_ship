@@ -4,7 +4,7 @@
 <head>
     <?php
     $page1 = "poli";
-    $page = "Catatan Data Poli";
+    $page = "Data Poli";
     session_start();
     include 'admin/connect.php';
     include "atoms/head.php";
@@ -85,7 +85,7 @@
             <div class="main-content">
                 <section class="section">
                     <div class="section-header">
-                        <h1>Data Poli</h1>
+                        <h1>Administrasi</h1>
                     </div>
 
                     <div class="section-body">
@@ -104,7 +104,7 @@
                                                 <thead>
                                                     <tr>
                                                         <th class="text-center">
-                                                            #
+                                                            No
                                                         </th>
                                                         <th>Nama Poli</th>
                                                         <th>Ruangan Poli</th>

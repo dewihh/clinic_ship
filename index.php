@@ -104,15 +104,6 @@
                         </div>
                     </div>
 
-                    <div class="card">
-                        <div class="card-header">
-                            <h4>Status Ruang Rawat Inap</h4>
-                            <div class="card-header-action">
-                                <a href="ruangan.php">Detail</a>
-                            </div>
-                        </div>
-
-                    </div>
 
                     <div style="width: 500px;margin: 0px auto;">
                         <canvas id="antrian"></canvas>
@@ -121,12 +112,12 @@
                         $no_antrian = "";
                         $jumals = null;
                         //Query SQL
-                        $sqla = "SELECT no_antrian,COUNT(*) as 'tlo' FROM antrian_a GROUP by no_antrian";
+                        $sqla = "SELECT queue_no,COUNT(*) as 'tlo' FROM queue_list GROUP by queue_no";
                         $hasi = mysqli_query($conn, $sqla);
 
                         while ($data = mysqli_fetch_array($hasi)) {
                             //Mengambil nilai jurusan dari database
-                            $antrian = $data['no_antrian'];
+                            $antrian = $data['queue_no'];
                             $no_antrian .= "'$antrian'" . ", ";
                             //Mengambil nilai total dari database
                             $jumls = $data['tlo'];
@@ -190,7 +181,7 @@
         var myChart = new Chart(ctx, {
             type: 'line',
             data: {
-                labels: [<?php $jumlah_bln = mysqli_query($conn, "SELECT  date_format(tgl,'%b') as bulan from antrian_a");
+                labels: [<?php $jumlah_bln = mysqli_query($conn, "SELECT  date_format(date_created,'%b') as bulan from queue_list");
                             while ($row = mysqli_fetch_array($jumlah_bln)) {
 
                                 echo "'" . $row["bulan"] . "',";
@@ -253,7 +244,7 @@
     <script>
         var ctx = document.getElementById("penyakit").getContext('2d');
         var myChart = new Chart(ctx, {
-            type: 'bar',
+            type: 'horizontalBar',
             data: {
                 labels: [<?php echo $penyakit; ?>],
                 datasets: [{
@@ -266,8 +257,9 @@
 
             // Configuration options go here
             options: {
+                indexAxis: 'y',
                 scales: {
-                    yAxes: [{
+                    xAxes: [{
                         ticks: {
                             beginAtZero: true
                         }

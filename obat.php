@@ -4,7 +4,7 @@
 <head>
     <?php
     $page1 = "Obat";
-    $page = "Obat";
+    $page = "Data Obat";
     session_start();
     include 'admin/connect.php';
     include "atoms/head.php";
@@ -62,7 +62,7 @@
             <div class="main-content">
                 <section class="section">
                     <div class="section-header">
-                        <h1><?php echo $page; ?></h1>
+                        <h1>Farmasi</h1>
                     </div>
                     <div class="section-body">
                         <div class="row">
@@ -79,7 +79,7 @@
                                             <table class="table table-striped" id="table-1">
                                                 <thead>
                                                     <tr>
-                                                        <th class="text-center">#</th>
+                                                        <th class="text-center">No</th>
                                                         <th>Kode Obat</th>
                                                         <th>Nama</th>
                                                         <th>Stok</th>

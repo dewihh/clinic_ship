@@ -4,7 +4,7 @@
 <head>
     <?php
     $page1 = "data";
-    $page = "Catatan Data Paramedik";
+    $page = "Data Paramedik";
     session_start();
     include 'admin/connect.php';
     include "atoms/head.php";
@@ -95,7 +95,7 @@
             <div class="main-content">
                 <section class="section">
                     <div class="section-header">
-                        <h1>Data Paramedik</h1>
+                        <h1>Administrasi</h1>
                     </div>
 
                     <div class="section-body">
@@ -105,7 +105,7 @@
                                     <div class="card-header">
                                         <h4><?php echo $page; ?></h4>
                                         <div class="card-header-action">
-                                            <a href="#" class="btn btn-primary" data-target="#addUser" data-toggle="modal">Tambah Pegawai</a>
+                                            <a href="#" class="btn btn-primary" data-target="#addUser" data-toggle="modal">Tambah Paramedis</a>
                                         </div>
                                     </div>
                                     <div class="card-body">
@@ -114,7 +114,7 @@
                                                 <thead>
                                                     <tr>
                                                         <th class="text-center">
-                                                            #
+                                                            No
                                                         </th>
                                                         <th>Kode Paramedik</th>
                                                         <th>Nama Paramedik</th>

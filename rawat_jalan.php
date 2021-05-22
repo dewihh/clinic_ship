@@ -115,7 +115,7 @@
                             <div class="col-12">
                                 <div class="card">
                                     <div class="card-header">
-                                        <h4>Create New App</h4>
+                                        <h4>Tambah Rekam Medis</h4>
                                     </div>
                                     <div class="card-body">
                                         <div class="row mt-4">

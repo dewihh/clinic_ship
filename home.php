@@ -41,7 +41,7 @@ file_put_contents('UIDContainer.php', $Write);
 						<a class="overlay" href="read tag.php"><span class="texts">Read Tag ID</span></a>
 					</li>
 					<li>
-						<a class="overlay" href="service.php"><span class="texts">Service</span></a>
+						<a class="overlay" href="antrian/index.php?page=queue_registration"><span class="texts">Service</span></a>
 					</li>
 				</ul>
 			</div>
