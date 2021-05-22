@@ -35,22 +35,7 @@ file_put_contents('UIDContainer.php', $Write);
       <h1>Selamat Datang</h1>
       <p>Sistem Informasi Pelayanan Kesehatan</p>
     </div>
-    <div class="homepages__navbar">
-      <div class="navbar__menu">
-        <ul>
-          <li>
-            <a class="overlay" href="home.php"><span class="texts">PUSKESMAS TEKNOLOGI REKAYASA INTERNET</span></a>
-          </li>
-          <li>
-            <?php
-            date_default_timezone_set('Asia/Jakarta');
-            $tgl    = date("l, d-M-Y / H:i:s a");
-            echo '<a class="overlay" href="service.php"><span class="texts">' . $tgl . ' </span></a>'
-            ?>
-          </li>
-        </ul>
-      </div>
-    </div>
+
     <div class="table-responsive"></div>
 
 
