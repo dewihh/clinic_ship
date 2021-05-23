@@ -46,14 +46,14 @@
       <div class="main-content">
         <section class="section">
           <div class="section-header">
-            <h1><?php echo $page1; ?></h1>
+            <h1>Rekam Medis</h1>
           </div>
           <div class="section-body">
             <div class="row">
               <div class="col-12">
                 <div class="card">
                   <div class="card-header">
-                    <h4>Pasien yang telah terdaftar</h4>
+                    <h4>Laporan Pemeriksaan Kesehatan</h4>
                     <div class="card-header-action">
                       <a href="rawat_jalan.php" class="btn btn-primary">Daftar pasien baru</a>
                     </div>

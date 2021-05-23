@@ -31,12 +31,16 @@ file_put_contents('UIDContainer.php', $Write);
 
 <body>
   <div class="homepages">
-    <div class="homepages__title">
+    <div class="homepages__title_antrian">
       <h1>Selamat Datang</h1>
       <p>Sistem Informasi Pelayanan Kesehatan</p>
     </div>
-
+    <div class="ant_videos">
+      <iframe width="500" height="170" src="https://www.youtube.com/embed/tgbNymZ7vqY?autoplay=1&mute=1">
+      </iframe>
+    </div>
     <div class="table-responsive"></div>
+
 
 
 

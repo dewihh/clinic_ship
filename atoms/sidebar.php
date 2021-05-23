@@ -33,8 +33,8 @@ foreach ($pecahjudul as $w) {
             <li class="dropdown <?php echo ($page1 == "Data Pasien" || $page1 == "det" || $page1 == "Rawat Jalan") ? "active" : ""; ?>">
                 <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-user-injured"></i> <span>Data Pasien</span></a>
                 <ul class="dropdown-menu">
-                    <li <?php echo (@$page1 == "Data Pasien" || @$page1 == "det") ? "class=active" : ""; ?>><a class="nav-link" href="pasien.php">Catatan Pasien</a></li>
-                    <li <?php echo (@$page1 == "Rawat Jalan") ? "class=active" : ""; ?>><a class="nav-link" href="rawat_jalan.php">Rekam Medis</a></li>
+                    <li <?php echo (@$page1 == "Data Pasien" || @$page1 == "det") ? "class=active" : ""; ?>><a class="nav-link" href="pasien.php">Rekam Medis</a></li>
+                    <li <?php echo (@$page1 == "Rawat Jalan") ? "class=active" : ""; ?>><a class="nav-link" href="rawat_jalan.php">Catatan Pasien</a></li>
                 </ul>
             </li>
 

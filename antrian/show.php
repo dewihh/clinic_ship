@@ -16,18 +16,19 @@
 </div>
 <div class="cont__panggil">
     <div class="ant_panggil">
+        <div class="tamp-satu">
+            <h3>Nomor Antrian</h3>
+        </div>
         <?php
         include "../admin/connect.php";
         $tgl    = date("Y-m-d");
         $query    = mysqli_query($conn, "SELECT * FROM queue_list WHERE status = 1  AND date(date_created) = '$tgl' ORDER BY id DESC LIMIT 1");
         while ($data    = mysqli_fetch_array($query)) {
         ?>
-            <div class="tamp-satu">
-                <h3>Nomor Antrian</h3>
-            </div>
+
             <div class="tamp-dua">
                 <h3><?php
-                    if (mysqli_num_rows($query) == 0) {
+                    if (mysqli_num_rows($query) == NULL) {
                         echo '<h3>0</h3>';
                     } else {
                         echo '<h3>' . $data['queue_no'] . '</h3>';
@@ -57,7 +58,7 @@
     </div>
 </div>
 <div class="cont_antr">
-    <div class="card_antr">
+    <div class="card_antr bg-umum">
         <?php
         include "../admin/connect.php";
         $tgl    = date("Y-m-d");
@@ -76,7 +77,7 @@
         }
         ?>
     </div>
-    <div class="card_antr">
+    <div class="card_antr bg-gigi">
         <?php
         include "../admin/connect.php";
         $tgl    = date("Y-m-d");
@@ -95,7 +96,7 @@
         }
         ?>
     </div>
-    <div class="card_antr">
+    <div class="card_antr bg-kia">
         <?php
         include "../admin/connect.php";
         $tgl    = date("Y-m-d");
@@ -114,7 +115,7 @@
         }
         ?>
     </div>
-    <div class="card_antr">
+    <div class="card_antr bg-gizi">
         <?php
         include "../admin/connect.php";
         $tgl    = date("Y-m-d");

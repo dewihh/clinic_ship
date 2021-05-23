@@ -17,13 +17,29 @@ body {
   text-align: center;
   margin-top: 100px;
 }
+.homepages__title_antrian {
+  font-family: "Sniglet", cursive;
+  text-align: center;
+  margin-top: 50px;
+}
 
 .homepages__title h1 {
   font-size: 45px;
   color: #946262;
 }
+.homepages__title_antrian h1 {
+  font-size: 45px;
+  color: #946262;
+}
 
 .homepages__title p {
+  font-family: "Courier New", Courier, monospace;
+  color: #cf7070;
+  margin-top: 7px;
+  font-size: 22px;
+}
+
+.homepages__title_antrian p {
   font-family: "Courier New", Courier, monospace;
   color: #cf7070;
   margin-top: 7px;
@@ -151,7 +167,7 @@ body {
   text-align: left;
 }
 
-.control-label {
+.control-labels {
   font-family: "Lexend Zetta", sans-serif;
   font-size: 14px;
   color: #eedfdf;
@@ -685,42 +701,71 @@ button:active {
 
 .ant_panggil {
   text-align: center;
+  color: #faf6f6;
 }
 
 .tamp-satu {
-  background-color: bisque;
+  background-color: #4cabc9;
   padding: 10px 70px 10px 70px;
   margin-bottom: 20px;
+  width: 500px;
 }
 
 .tamp-dua {
-  background-color: bisque;
+  background-color: #4cabc9;
   padding: 10px 70px 10px 70px;
   margin-bottom: 20px;
+  width: 500px;
 }
 
 .tamp-tiga {
-  background-color: bisque;
+  background-color: #4cabc9;
   padding: 10px 70px 10px 70px;
+  width: 500px;
 }
 
 .ant_video {
-  background-color: bisque;
+  background-color: rgb(146, 112, 71);
   padding: 50px 70px 50px 70px;
   text-align: center;
+  width: 500px;
+}
+.ant_videos {
+  text-align: center;
+  width: 500px;
+  position: absolute;
+  right: 117px;
+  top: 302px;
 }
 
 .cont_antr {
   display: flex;
   justify-content: space-evenly;
-  margin-top: 40px;
+  margin-top: 80px;
   margin-bottom: 50px;
   text-align: center;
 }
 
 .card_antr {
-  background-color: bisque;
-  padding: 20px 70px 20px 70px;
+  padding: 20px 50px 20px 50px;
+  color: #faf6f6;
+  border-radius: 10px;
+}
+
+.bg-umum {
+  background-color: #ef9a9a;
+}
+
+.bg-gigi {
+  background-color: #eec121;
+}
+
+.bg-kia {
+  background-color: #639bee;
+}
+
+.bg-gizi {
+  background-color: #2a8f34;
 }
 
 @media (max-width: 575.98px) {

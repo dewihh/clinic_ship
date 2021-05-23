@@ -107,7 +107,7 @@
             <div class="main-content">
                 <section class="section">
                     <div class="section-header">
-                        <h1><?php echo $page; ?></h1>
+                        <h1>Data Pasien</h1>
                     </div>
 
                     <div class="section-body">
@@ -115,7 +115,7 @@
                             <div class="col-12">
                                 <div class="card">
                                     <div class="card-header">
-                                        <h4>Tambah Rekam Medis</h4>
+                                        <h4>Pemeriksaan Kesehatan</h4>
                                     </div>
                                     <div class="card-body">
                                         <div class="row mt-4">

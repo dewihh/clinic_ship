@@ -67,21 +67,21 @@ file_put_contents('UIDContainer.php', $Write);
 				<div class="container__input">
 					<form class="form-horizontal" action="insertDB.php" method="post">
 						<div class="control-group">
-							<label class="control-label mrg-104">ID</label>
+							<label class="control-labels mrg-104">ID</label>
 							<div class="controls">
 								<textarea name="id" id="getUID" placeholder="Please Scan your Card to display ID" rows="1" cols="1" required></textarea>
 							</div>
 						</div>
 
 						<div class="control-group">
-							<label class="control-label mrg-57">Name</label>
+							<label class="control-labels mrg-57">Name</label>
 							<div class="controls">
 								<input id="div_refresh" name="name" type="text" placeholder="Isikan Nama" required>
 							</div>
 						</div>
 
 						<div class="control-group">
-							<label class="control-label mrg-48">Gender</label>
+							<label class="control-labels mrg-48">Gender</label>
 							<div class="controls">
 								<select name="gender">
 									<option value="Male">Male</option>
@@ -91,28 +91,28 @@ file_put_contents('UIDContainer.php', $Write);
 						</div>
 
 						<div class="control-group">
-							<label class="control-label mrg-182">Age</label>
+							<label class="control-labels mrg-182">Age</label>
 							<div class="controls">
 								<input id="tgl" name="age" type="text" placeholder="Isikan Usia" required>
 							</div>
 						</div>
 
 						<div class="control-group">
-							<label class="control-label mrg-114">Validation</label>
+							<label class="control-labels mrg-114">Validation</label>
 							<div class="controls">
 								<input name="validation_sheet" type="text" placeholder="Isikan Nama_kk" required>
 							</div>
 						</div>
 
 						<div class="control-group">
-							<label class="control-label mrg-141">Address</label>
+							<label class="control-labels mrg-141">Address</label>
 							<div class="controls">
 								<input name="adress" type="text" placeholder="Isikan Alamat" required>
 							</div>
 						</div>
 
 						<div class="control-group">
-							<label class="control-label mrg-28">Phone Number</label>
+							<label class="control-labels mrg-28">Phone Number</label>
 							<div class="controls">
 								<input name="phone_numb" type="text" placeholder="Isikan Nomor Telepon" required>
 							</div>

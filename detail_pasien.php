@@ -74,7 +74,7 @@
                                                             <td> : <?php echo tgl_indo($pasien['age']); ?></td>
                                                         </tr>
                                                         <tr>
-                                                            <th scope="row">Tinggi Bandan</th>
+                                                            <th scope="row">Tinggi Badan</th>
                                                             <td> : <?php echo $pasien['tinggi'] . " cm"; ?></td>
                                                         </tr>
                                                         <tr>
