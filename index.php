@@ -111,6 +111,12 @@
                         //Inisialisasi nilai variabel awal
                         $no_antrian = "";
                         $jumals = null;
+                        $label = ["Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember"];
+                        for ($bulan = 1; $bulan < 13; $bulan++) {
+                            $query = mysqli_query($conn, "SELECT queue_no,COUNT(*) as jumalah FROM queue_list where MONTH(date_created)='$bulan'");
+                            $row = $query->fetch_array();
+                            $jumlah_produk[] = $row['jumalah'];
+                        }
                         //Query SQL
                         $sqla = "SELECT queue_no,COUNT(*) as 'tlo' FROM queue_list GROUP by queue_no";
                         $hasi = mysqli_query($conn, $sqla);
@@ -179,30 +185,12 @@
     <script>
         var ctx = document.getElementById("antrian").getContext('2d');
         var myChart = new Chart(ctx, {
-            type: 'line',
+            type: 'bar',
             data: {
-                labels: [<?php $jumlah_bln = mysqli_query($conn, "SELECT  date_format(date_created,'%b') as bulan from queue_list");
-                            while ($row = mysqli_fetch_array($jumlah_bln)) {
-
-                                echo "'" . $row["bulan"] . "',";
-                            } ?>],
+                labels: <?php echo json_encode($label); ?>,
                 datasets: [{
-                    label: 'Apa ini',
-                    data: [<?php echo $jumals; ?>]
-
-                        ,
-                    backgroundColor: [
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(54, 162, 235, 0.2)',
-                        'rgba(255, 206, 86, 0.2)',
-                        'rgba(75, 192, 192, 0.2)'
-                    ],
-                    borderColor: [
-                        'rgba(255,99,132,1)',
-                        'rgba(54, 162, 235, 1)',
-                        'rgba(255, 206, 86, 1)',
-                        'rgba(75, 192, 192, 1)'
-                    ],
+                    label: 'Grafik Penjualan',
+                    data: <?php echo json_encode($jumlah_produk); ?>,
                     borderWidth: 1
                 }]
             },
@@ -214,10 +202,7 @@
                         }
                     }]
                 }
-
             }
-
-
         });
     </script>
 
