@@ -1894,6 +1894,11 @@ h6 .badge {
   pointer-events: none;
 }
 
+.inp-reload {
+  border: none;
+  background-color: #cdd3d8;
+}
+
 /* 3.13 Media */
 .media .media-right {
   float: right;

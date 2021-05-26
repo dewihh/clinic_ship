@@ -210,7 +210,7 @@
                                 <select class="form-control selectric" name="pekerjaan">
                                     <option value="1">Dokter Umum</option>
                                     <option value="2">Dokter Gigi</option>
-                                    <option value="3">Dokter Anak</option>
+                                    <option value="3">Dokter Gizi</option>
                                     <option value="4">Dokter KIA</option>
                                 </select>
                             </div>

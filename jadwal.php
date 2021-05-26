@@ -4,7 +4,7 @@
 <head>
     <?php
     $page1 = "jadwal";
-    $page = "Catatan Data Jabatan";
+    $page = "Jadwal Praktek Dokter";
     session_start();
     include 'admin/connect.php';
     include "atoms/head.php";
@@ -91,7 +91,7 @@
             <div class="main-content">
                 <section class="section">
                     <div class="section-header">
-                        <h1>Jadwal Dokter</h1>
+                        <h1>Administrasi</h1>
                     </div>
 
                     <div class="section-body">

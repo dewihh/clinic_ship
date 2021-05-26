@@ -66,7 +66,9 @@
                                 <div class="card">
                                     <div class="card-header">
                                         <h4>Data Transaksi</h4>
-
+                                        <div class="card-header-action">
+                                            <a class="btn btn-secondary btn-action button selector" href="keuangan.php" title="Reload">Reload</a>
+                                        </div>
                                     </div>
                                     <div class="card-body">
                                         <div class="table-responsive">

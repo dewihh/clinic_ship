@@ -105,7 +105,7 @@
                                     <div class="card-header">
                                         <h4><?php echo $page; ?></h4>
                                         <div class="card-header-action">
-                                            <a href="#" class="btn btn-primary" data-target="#addUser" data-toggle="modal">Tambah Paramedis</a>
+                                            <a href="#" class="btn btn-primary" data-target="#addUser" data-toggle="modal">Tambah Paramedik</a>
                                         </div>
                                     </div>
                                     <div class="card-body">
