@@ -79,7 +79,8 @@
                                                         <th>Nama Pasien</th>
                                                         <th>Tanggal Berobat</th>
                                                         <th>Biaya Pengobatan</th>
-                                                        <th>Obat</th>
+                                                        <th>Jumlah Obat</th>
+                                                        <th>Nama Obat</th>
                                                         <th>Total Biaya</th>
                                                         <th>Status</th>
                                                         <th>Aksi</th>
@@ -131,6 +132,27 @@
                                                                     }
                                                                 }
                                                                 ?>
+                                                            </td>
+                                                            <td>
+                                                                <?php
+                                                                $obat2an = mysqli_query($conn, "SELECT * FROM riwayat_obat WHERE id_penyakit='$idpenyakit'  ORDER BY id DESC");
+                                                                $jumobat = mysqli_num_rows($obat2an);
+                                                                if ($jumobat == 0) {
+                                                                    echo "Tidak ada obat yang diberikan";
+                                                                } else {
+                                                                    $count = 0;
+                                                                    while ($showobat = mysqli_fetch_array($obat2an)) {
+                                                                        $idobat = $showobat['id_obat'];
+                                                                        $obatlagi = mysqli_query($conn, "SELECT * FROM obat WHERE id='$idobat'");
+                                                                        $namaobat = mysqli_fetch_array($obatlagi);
+                                                                        echo $str = ucwords($namaobat['nama_obat']);
+                                                                        $count = $count + 1;
+
+                                                                        if ($count < $jumobat) {
+                                                                            echo ", ";
+                                                                        }
+                                                                    }
+                                                                } ?>
                                                             </td>
                                                             <td>
                                                                 <?php

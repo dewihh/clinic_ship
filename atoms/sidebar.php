@@ -24,7 +24,7 @@ foreach ($pecahjudul as $w) {
                 <ul class="dropdown-menu">
                     <li <?php echo (@$page1 == "datajabatan") ? "class=active" : ""; ?>><a class="nav-link" href="jabatan.php">Data Jabatan</a></li>
                     <li <?php echo (@$page1 == "Data Pegawai") ? "class=active" : ""; ?>><a class="nav-link" href="pegawai.php">Data Pegawai</a></li>
-                    <li <?php echo (@$page1 == "data") ? "class=active" : ""; ?>><a class="nav-link" href="paramedik.php">Data Paramedis</a></li>
+                    <li <?php echo (@$page1 == "data") ? "class=active" : ""; ?>><a class="nav-link" href="paramedik.php">Data Paramedik</a></li>
                     <li <?php echo (@$page1 == "poli") ? "class=active" : ""; ?>><a class="nav-link" href="poli.php">Data Poli</a></li>
                     <li <?php echo (@$page1 == "jadwal") ? "class=active" : ""; ?>><a class="nav-link" href="jadwal.php">Jadwal Dokter</a></li>
                 </ul>
